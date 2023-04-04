@@ -4,7 +4,7 @@ const connectDatabase = require("./db/Database.js");
 // Handle uncaught Exception
 process.on("uncaughtException", (err) => {
     console.log(`unCaughtException Error: ${err.message}`);
-    console.log("Stopping server for unCaughtException Error...");
+    // console.log("Stopping server for unCaughtException Error...");
 });
 
 // Config
