@@ -5,10 +5,10 @@ import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ const Signup = () => {
         newForm.append("password", password);
         axios.post(`${server}/user/create-user`, newForm, config)
             .then((res) => {
-                if (res.data.success === true) navigate("/");
+                alert(res.data.message);
             })
             .catch((err) => {
                 console.log(err);

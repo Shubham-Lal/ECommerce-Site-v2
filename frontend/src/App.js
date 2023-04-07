@@ -6,14 +6,16 @@ import {
 } from "react-router-dom";
 import {
   LoginPage,
-  SignupPage
+  SignupPage,
+  ActivationPage
 } from "./Routes";
 import axios from 'axios';
 import { useEffect } from 'react';
+import { server } from './server';
 
 function App() {
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`);
+    axios.get(`${server}/user`);
   }, []);
 
   return (
@@ -21,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/auth" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/activation/:activationToken" element={<ActivationPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -7,6 +7,8 @@ const ErrorHandler = require("../utils/ErrorHandler.js");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail.js");
+const catchAsyncError = require("../middleware/catchAsyncError.js");
+const sendToken = require("../utils/jwtToken.js");
 
 // On Backend Call at "/api/v2/user"
 router.get("/", (req, res) => {
@@ -16,7 +18,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// User Registration
+// User Registration at "/api/v2/user/create-user"
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
@@ -29,11 +31,8 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
                     console.log(err);
                     res.status(500).json({ message: "Error deleting file" });
                 }
-                else {
-                    res.json({ message: "File deleted successfully" });
-                }
             });
-            // return next(new ErrorHandler("User already exists", 400));
+            return next(new ErrorHandler("User already exists", 400));
         }
 
         const filename = req.file.filename;
@@ -62,20 +61,44 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
             });
         }
         catch (error) {
-            // return next(new ErrorHandler(error.message, 500));
+            return next(new ErrorHandler(error.message, 500));
         }
     }
     catch (error) {
-        // return next(new ErrorHandler(error.message, 400));
+        return next(new ErrorHandler(error.message, 400));
     }
 });
 
-// Activation Token
 const createActivationToken = (user) => {
     return jwt.sign(user, process.env.ACTIVATION_SECRET, {
         expiresIn: "10m"
     });
 };
 
-// Activate User
+// Activation Token at "/api/v2/user/activation"
+router.post("/activation", catchAsyncError(async (req, res, next) => {
+    try {
+        const { activationToken } = req.body;
+        const newUser = jwt.verify(activationToken, process.env.ACTIVATION_SECRET);
+
+        if (!newUser) return next(new ErrorHandler("Invalid Token", 400));
+
+        const { name, email, avatar, password } = newUser;
+
+        let user = await User.findOne({ email });
+        if (user) return next(new ErrorHandler("User already exists!", 400));
+
+        user = await User.create({
+            name,
+            email,
+            avatar,
+            password,
+        });
+        sendToken(user, 201, res);
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
 module.exports = router;
