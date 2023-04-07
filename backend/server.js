@@ -32,8 +32,3 @@ process.on("unhandledRejection", (err) => {
         process.exit(1);
     });
 });
-
-// On Backend Call at "/"
-app.get("/", (req, res) => {
-    res.send("CERTYSTORE API");
-});

@@ -8,8 +8,14 @@ import {
   LoginPage,
   SignupPage
 } from "./Routes";
+import axios from 'axios';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
