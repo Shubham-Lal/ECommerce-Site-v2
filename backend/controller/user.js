@@ -57,7 +57,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
             });
             res.status(201).json({
                 success: true,
-                message: `Please check your email ${user.email} to activate your CertyStore account`,
+                message: `Please check your Email ${user.email} to activate your CertyStore account`,
             });
         }
         catch (error) {

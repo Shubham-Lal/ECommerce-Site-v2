@@ -5,6 +5,7 @@ import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
+import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -14,6 +15,7 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
     const [avatar, setAvatar] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleFileUpload = (e) => {
         const file = e.target.files[0];
@@ -22,6 +24,7 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const config = { headers: { "Content-Type": "multipart/form-data" } };
         const newForm = new FormData();
         newForm.append("file", avatar);
@@ -30,10 +33,18 @@ const Signup = () => {
         newForm.append("password", password);
         axios.post(`${server}/user/create-user`, newForm, config)
             .then((res) => {
-                alert(res.data.message);
+                toast.success(res.data.message)
+                setEmail("");
+                setName("");
+                setPassword("");
+                setVisible(false);
+                setAvatar(null);
             })
             .catch((err) => {
-                console.log(err);
+                toast.error(err.response.data.message);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     };
 
@@ -171,10 +182,11 @@ const Signup = () => {
 
                         <div>
                             <button
+                                disabled={loading}
                                 type="submit"
-                                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                                className={`group cursor-${loading ? "not-allowed" : "pointer"} relative w-full h-[40px] flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${loading ? "bg-gray-400" : "bg-blue-600"} hover:${loading ? "bg-gray-500" : "bg-blue-700"}`}
                             >
-                                Submit
+                                {loading ? "Creating..." : "Create"}                                
                             </button>
                         </div>
                         <div className={`${styles.normalFlex} w-full`}>

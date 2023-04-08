@@ -12,6 +12,8 @@ import {
 import axios from 'axios';
 import { useEffect } from 'react';
 import { server } from './server';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   useEffect(() => {
@@ -25,6 +27,18 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
       </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose={10000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
   );
 }
