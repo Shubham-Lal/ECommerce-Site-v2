@@ -101,4 +101,24 @@ router.post("/activation", catchAsyncError(async (req, res, next) => {
     }
 }));
 
+//// User Login at "/api/v2/user/auth"
+router.post("/auth", catchAsyncError(async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        if (!email) return next(new ErrorHandler("Please enter your Email!", 400));
+        if (!password) return next(new ErrorHandler("Please enter your Password!", 400));
+
+        const user = await User.findOne({ email }).select("+password");
+        if (!user) return next(new ErrorHandler("User doesn't exists!", 400));
+
+        const isPasswordValid = await user.comparePassword(password);
+        if (!isPasswordValid) return next(new ErrorHandler("Try again with correct credentials!", 400));
+
+        sendToken(user, 201, res)
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
 module.exports = router;

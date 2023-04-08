@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const Signup = () => {
         newForm.append("name", name);
         newForm.append("email", email);
         newForm.append("password", password);
-        axios.post(`${server}/user/create-user`, newForm, config)
+        await axios.post(`${server}/user/create-user`, newForm, config)
             .then((res) => {
                 toast.success(res.data.message)
                 setEmail("");
@@ -39,6 +39,7 @@ const Signup = () => {
                 setPassword("");
                 setVisible(false);
                 setAvatar(null);
+                navigate("/auth");
             })
             .catch((err) => {
                 toast.error(err.response.data.message);
@@ -186,7 +187,7 @@ const Signup = () => {
                                 type="submit"
                                 className={`group cursor-${loading ? "not-allowed" : "pointer"} relative w-full h-[40px] flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${loading ? "bg-gray-400" : "bg-blue-600"} hover:${loading ? "bg-gray-500" : "bg-blue-700"}`}
                             >
-                                {loading ? "Creating..." : "Create"}                                
+                                {loading ? "Creating..." : "CREATE"}
                             </button>
                         </div>
                         <div className={`${styles.normalFlex} w-full`}>
