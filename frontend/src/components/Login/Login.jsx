@@ -19,7 +19,7 @@ const Login = () => {
     setLoading(true);
     axios.post(`${server}/user/auth`, {
       email, password,
-    }, { withCredentials: remember && true })
+    }, { withCredentials: remember ? true : false })
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
