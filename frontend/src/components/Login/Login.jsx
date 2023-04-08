@@ -12,14 +12,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [remember, setRemember] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await axios.post(`${server}/user/auth`, {
+    axios.post(`${server}/user/auth`, {
       email, password,
-    })
-      // }, { withCredentials: true })
+    }, { withCredentials: remember && true })
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
@@ -101,6 +101,7 @@ const Login = () => {
                   type="checkbox"
                   name="remember-me"
                   id="remember-me"
+                  onChange={() => setRemember(prev => !prev)}
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me

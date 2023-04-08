@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const sendToken = require("../utils/jwtToken.js");
+const { isAuthenticated } = require("../middleware/auth.js");
 
 // On Backend Call at "/api/v2/user"
 router.get("/", (req, res) => {
@@ -101,7 +102,7 @@ router.post("/activation", catchAsyncError(async (req, res, next) => {
     }
 }));
 
-//// User Login at "/api/v2/user/auth"
+// User Login at "/api/v2/user/auth"
 router.post("/auth", catchAsyncError(async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -115,6 +116,22 @@ router.post("/auth", catchAsyncError(async (req, res, next) => {
         if (!isPasswordValid) return next(new ErrorHandler("Try again with correct credentials!", 400));
 
         sendToken(user, 201, res)
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// Load User
+router.get("/getuser", isAuthenticated, catchAsyncError(async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return next(new ErrorHandler("User doesn't exists!", 500));
+
+        res.status(200).json({
+            success: true,
+            user,
+        });
     }
     catch (error) {
         return next(new ErrorHandler(error.message, 500));

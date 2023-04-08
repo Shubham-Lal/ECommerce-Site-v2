@@ -12,6 +12,13 @@ app.use(bodyParser.urlencoded({
 }));
 app.use("/", express.static("uploads"));
 
+// Config
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require("dotenv").config({
+        path: "./config/.env"
+    });
+}
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -20,18 +27,11 @@ app.use(function (req, res, next) {
 });
 
 const corsOptions = {
-    origin: '*',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
     optionSuccessStatus: 200,
 }
 app.use(cors(corsOptions));
-
-// Config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({
-        path: "./config/.env"
-    });
-}
 
 // Routes
 const user = require("./controller/user.js");
