@@ -13,13 +13,15 @@ const Login = () => {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(false);
+  console.log(remember);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     axios.post(`${server}/user/auth`, {
       email, password,
-    }, { withCredentials: remember ? true : false })
+    }, { withCredentials: true })
+      // }, { withCredentials: remember ? true : false })
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
