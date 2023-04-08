@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from '../components/Login/Login';
 
-const LoginPage = () => {
+const LoginPage = ({ setToken }) => {
     return (
         <div className="">
-            <Login />
+            <Login setToken={setToken} />
         </div>
     )
 }

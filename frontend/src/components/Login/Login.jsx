@@ -6,23 +6,22 @@ import axios from "axios";
 import { server } from '../../server';
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(false);
-  console.log(remember);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     axios.post(`${server}/user/auth`, {
       email, password,
-    }, { withCredentials: true })
-      // }, { withCredentials: remember ? true : false })
+    }, { withCredentials: remember ? true : false })
       .then((res) => {
+        setToken(res.data.token);
         toast.success("Login Success!");
         navigate("/");
       })

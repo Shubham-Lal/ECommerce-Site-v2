@@ -9,21 +9,24 @@ import {
   SignupPage,
   ActivationPage
 } from "./Routes";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Store from './redux/store';
 import { loadUser } from './redux/actions/user';
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("Token"));
+
   useEffect(() => {
-    Store.dispatch(loadUser());
-  }, []);
+    Store.dispatch(loadUser(token));
+    localStorage.setItem("Token", token);
+  }, [token]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/auth" element={<LoginPage />} />
+        <Route path="/auth" element={<LoginPage setToken={setToken} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
       </Routes>
