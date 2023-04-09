@@ -24,7 +24,7 @@ const Header = ({ activeHeading }) => {
     };
 
     window.addEventListener("scroll", () => {
-        if (window.screenY > 70) setHeaderActive(true);
+        if (window.scrollY > 90) setHeaderActive(true);
         else setHeaderActive(false);
     });
 
@@ -85,7 +85,8 @@ const Header = ({ activeHeading }) => {
                 </div>
             </div>
 
-            <div className={`${headerActive ? "shadow-sm fixed top-0 left-0 z-10" : null} transition hidden 800px:flex items-center justify-between w-full bg-[#3321C8] h-[70px]`}>
+            {/* <div className={`${headerActive ? "shadow-sm fixed top-0 left-0 z-10" : null} hidden 800px:flex items-center justify-between w-full bg-[#3321C8] h-[70px] transition-all ${headerActive && "bg-white bg-opacity-20 backdrop-blur-lg drop-shadow-lg"}`}> */}
+            <div className={`${headerActive ? "shadow-sm fixed top-0 left-0 z-10" : null} hidden 800px:flex items-center justify-between w-full bg-[#3321C8] h-[70px] transition-all`}>
                 <div className={`${styles.section} relative ${styles.normalFlex} justify-between`}>
 
                     {/* CATEGORIES */}

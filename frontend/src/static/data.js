@@ -83,7 +83,7 @@ export const brandingData = [
     {
         id: 1,
         title: "Free Shipping",
-        Description: "From all orders over 100$",
+description: "From all orders over ₹1000",
         icon: (
             <svg
                 width="36"
@@ -95,37 +95,37 @@ export const brandingData = [
                 <path
                     d="M1 1H5.63636V24.1818H35"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M8.72763 35.0002C10.4347 35.0002 11.8185 33.6163 11.8185 31.9093C11.8185 30.2022 10.4347 28.8184 8.72763 28.8184C7.02057 28.8184 5.63672 30.2022 5.63672 31.9093C5.63672 33.6163 7.02057 35.0002 8.72763 35.0002Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M31.9073 35.0002C33.6144 35.0002 34.9982 33.6163 34.9982 31.9093C34.9982 30.2022 33.6144 28.8184 31.9073 28.8184C30.2003 28.8184 28.8164 30.2022 28.8164 31.9093C28.8164 33.6163 30.2003 35.0002 31.9073 35.0002Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M34.9982 1H11.8164V18H34.9982V1Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M11.8164 7.18164H34.9982"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
             </svg>
         ),
@@ -133,7 +133,7 @@ export const brandingData = [
     {
         id: 2,
         title: "Daily Surprise Offers",
-        Description: "Save up to 25% off",
+        description: "Save up to 25% off",
         icon: (
             <svg
                 width="32"
@@ -145,23 +145,23 @@ export const brandingData = [
                 <path
                     d="M31 17.4502C31 25.7002 24.25 32.4502 16 32.4502C7.75 32.4502 1 25.7002 1 17.4502C1 9.2002 7.75 2.4502 16 2.4502C21.85 2.4502 26.95 5.7502 29.35 10.7002"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
                 ></path>
                 <path
                     d="M30.7 2L29.5 10.85L20.5 9.65"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
             </svg>
         ),
     },
     {
-        id: 4,
+        id: 3,
         title: "Affortable Prices",
-        Description: "Get Factory direct price",
+        description: "Get Factory direct price",
         icon: (
             <svg
                 width="32"
@@ -173,42 +173,42 @@ export const brandingData = [
                 <path
                     d="M7 13H5.5C2.95 13 1 11.05 1 8.5V1H7"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
                 ></path>
                 <path
                     d="M25 13H26.5C29.05 13 31 11.05 31 8.5V1H25"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
                 ></path>
                 <path
                     d="M16 28V22"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
                 ></path>
                 <path
                     d="M16 22C11.05 22 7 17.95 7 13V1H25V13C25 17.95 20.95 22 16 22Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M25 34H7C7 30.7 9.7 28 13 28H19C22.3 28 25 30.7 25 34Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
             </svg>
         ),
     },
     {
-        id: 5,
+        id: 4,
         title: "Secure Payments",
-        Description: "100% protected payments",
+        description: "100% protected payments",
         icon: (
             <svg
                 width="32"
@@ -220,23 +220,23 @@ export const brandingData = [
                 <path
                     d="M22.6654 18.667H9.33203V27.0003H22.6654V18.667Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M12.668 18.6663V13.6663C12.668 11.833 14.168 10.333 16.0013 10.333C17.8346 10.333 19.3346 11.833 19.3346 13.6663V18.6663"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
                 <path
                     d="M31 22C31 30.3333 24.3333 37 16 37C7.66667 37 1 30.3333 1 22V5.33333L16 2L31 5.33333V22Z"
                     stroke="#FFBB38"
-                    stroke-width="2"
-                    stroke-miterlimit="10"
-                    stroke-linecap="square"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="square"
                 ></path>
             </svg>
         ),
@@ -247,14 +247,14 @@ export const brandingData = [
 export const categoriesData = [
     {
         id: 1,
-        title: "Computers and Laptops",
+        title: "Computers & Laptops",
         subTitle: "",
         image_Url:
             "https://cdn.shopify.com/s/files/1/1706/9177/products/NEWAppleMacbookProwithM1ProChip14InchLaptop2021ModelMKGQ3LL_A_16GB_1TBSSD_custommacbd.jpg?v=1659592838",
     },
     {
         id: 2,
-        title: "cosmetics and body care",
+        title: "cosmetics & body care",
         subTitle: "",
         image_Url:
             "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",
@@ -295,14 +295,14 @@ export const categoriesData = [
     },
     {
         id: 8,
-        title: "Mobile and Tablets",
+        title: "Mobile & Tablets",
         subTitle: "",
         image_Url:
             "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
     },
     {
         id: 9,
-        title: "Music and Gaming",
+        title: "Music & Gaming",
         subTitle: "",
         image_Url:
             "https://static.vecteezy.com/system/resources/previews/011/996/555/original/3d-black-headphone-illustration-ecommerce-icon-png.png",
@@ -320,7 +320,7 @@ export const categoriesData = [
 export const productData = [
     {
         id: 1,
-        category: "Computers and Laptops",
+        category: "Computers & Laptops",
         name: "MacBook Pro M2",
         description:
             "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -350,7 +350,7 @@ export const productData = [
     },
     {
         id: 2,
-        category: "Mobile and Tablets",
+        category: "Mobile & Tablets",
         name: "Iphone 14 Pro Max",
         description:
             "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -439,7 +439,7 @@ export const productData = [
     },
     {
         id: 5,
-        category: "Music and Gaming",
+        category: "Music & Gaming",
         name: "Asus Gaming Headphone",
         description:
             "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
