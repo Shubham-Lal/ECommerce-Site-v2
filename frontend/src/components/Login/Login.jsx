@@ -6,13 +6,12 @@ import axios from "axios";
 import { server } from '../../server';
 import { toast } from "react-toastify";
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, remember, setRemember }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [remember, setRemember] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();

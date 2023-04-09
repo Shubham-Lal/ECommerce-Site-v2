@@ -5,6 +5,8 @@ import {
   Route
 } from "react-router-dom";
 import {
+  ErrorPage,
+  HomePage,
   LoginPage,
   SignupPage,
   ActivationPage
@@ -16,17 +18,20 @@ import Store from './redux/store';
 import { loadUser } from './redux/actions/user';
 
 function App() {
+  const [remember, setRemember] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("Token"));
+  if (remember) localStorage.setItem("Token", token);
 
   useEffect(() => {
     Store.dispatch(loadUser(token));
-    localStorage.setItem("Token", token);
   }, [token]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/auth" element={<LoginPage setToken={setToken} />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<LoginPage setToken={setToken} remember={remember} setRemember={setRemember} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
       </Routes>

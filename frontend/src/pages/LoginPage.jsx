@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from '../components/Login/Login';
 
-const LoginPage = ({ setToken }) => {
+const LoginPage = ({ setToken, remember, setRemember }) => {
     return (
-        <div className="">
-            <Login setToken={setToken} />
+        <div>
+            <Login setToken={setToken} remember={remember} setRemember={setRemember} />
         </div>
     )
 }
