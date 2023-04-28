@@ -14,6 +14,7 @@ const Header = ({ activeHeading }) => {
     const [searchData, setSearchData] = useState([]);
     const [headerActive, setHeaderActive] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState("Categories");
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
@@ -100,7 +101,7 @@ const Header = ({ activeHeading }) => {
                                 <button
                                     className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
                                 >
-                                    All Categories
+                                    {selectedCategory}
                                 </button>
                                 <IoIosArrowDown
                                     size={20}
@@ -113,6 +114,7 @@ const Header = ({ activeHeading }) => {
                                 <Dropdown
                                     categoriesData={categoriesData}
                                     setDropdown={setDropdown}
+                                    setSelectedCategory={setSelectedCategory}
                                 />
                             ) : null}
                         </div>
