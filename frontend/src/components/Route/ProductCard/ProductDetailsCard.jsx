@@ -70,7 +70,7 @@ const ProductDetailsCard = ({ setQuickView, product }) => {
                 <h1 className={`${styles.productTitle} text-[20px]`}>
                   {product.name}
                 </h1>
-                <p>
+                <p className="text-justify">
                   {product.description}
                 </p>
                 <div className="flex items-center pt-3">

@@ -8,7 +8,7 @@ const FeaturedProduct = () => {
         <div>
             <div className={`${styles.section}`}>
                 <div className={`${styles.heading}`}>
-                    <h1>
+                    <h1 className="font-Poppins">
                         Featured Products
                     </h1>
                 </div>
