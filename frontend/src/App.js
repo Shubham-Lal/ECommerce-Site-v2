@@ -9,7 +9,8 @@ import {
   HomePage,
   LoginPage,
   SignupPage,
-  ActivationPage
+  ActivationPage,
+  ProductsPage
 } from "./Routes";
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/auth" element={<LoginPage setToken={setToken} remember={remember} setRemember={setRemember} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
+        <Route path="/products" element={<ProductsPage />} />
       </Routes>
       <ToastContainer
         position="top-center"
