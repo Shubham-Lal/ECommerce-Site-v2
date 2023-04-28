@@ -9,7 +9,7 @@ const Navbar = ({ activeHeading, navItems }) => {
             <div className="flex" key={index}>
                 <Link 
                     to={item.url}
-                    className={`${activeHeading === index+1 ? "text-[#17DD1F]" : "text-[#fff]"} font-[500] px-6 cursor-pointer`}
+                    className={`${activeHeading === index+1 ? "text-[#17DD1F]" : "text-[#fff] hover:scale-[1.5] duration-200"} font-Poppins hover:text-[#17DD1F] font-[500] px-6 cursor-pointer`}
                 >
                     {item.title}
                 </Link>

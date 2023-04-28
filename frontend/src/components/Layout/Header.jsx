@@ -35,7 +35,10 @@ const Header = ({ activeHeading }) => {
                     {/* LOGO */}
                     <div>
                         <Link to="/">
-                            <img src="/certystore.png" alt="" />
+                            {/* <img src="/certystore.png" alt="" /> */}
+                            <h1 className="text-[40px] text-[#F6BA00] font-Poppins font-bold">
+                                CERTYSTORE
+                            </h1>
                         </Link>
                     </div>
 

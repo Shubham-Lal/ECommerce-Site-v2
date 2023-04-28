@@ -22,59 +22,72 @@ export const navItems = [
     },
 ];
 
-export const footerProductLinks = [
+export const footerCompanyLinks = [
     {
         name: "About us",
-        link: "/about"
+        link: "/about",
     },
     {
         name: "Careers",
-        link: "/carrers"
+        link: "/careers",
     },
     {
         name: "Store Locations",
+        link: "/store",
     },
     {
         name: "Our Blog",
+        link: "/blog",
     },
     {
         name: "Reviews",
+        link: "/reviews",
     },
 ];
 
-export const footercompanyLinks = [
+export const footerItemLinks = [
     {
-        name: "Game & Video",
-    },
-    {
-        name: "Phone &Tablets",
+        name: "Mobile & Tablets",
+        link: "/products?category=Mobile%20&%20Tablets",
     },
     {
         name: "Computers & Laptop",
+        link: "/products?category=Computers%20&%20Laptops",
     },
     {
-        name: "Sport Watches",
+        name: "Music & Gaming",
+        link: "/products?category=Music%20&%20Gaming",
     },
     {
-        name: "Events",
+        name: "Clothes",
+        link: "/products?category=Clothes",
+    },
+    {
+        name: "Cosmetic & Body Care",
+        link: "/products?category=cosmetics%20&%20body%20care",
     },
 ];
 
 export const footerSupportLinks = [
     {
-        name: "FAQ",
+        name: "FAQs",
+        link: "/faq",
     },
     {
         name: "Reviews",
+        link: "/reviews",
     },
     {
         name: "Contact Us",
+        link: "/contact",
     },
     {
         name: "Shipping",
+        link: "/shipping",
     },
     {
-        name: "Live chat",
+        name: "Chat",
+        link: "/chat",
     },
 ];
 
@@ -261,14 +274,14 @@ export const categoriesData = [
     },
     {
         id: 3,
-        title: "Accesories",
+        title: "Accessories",
         subTitle: "",
         image_Url:
             "https://img.freepik.com/free-vector/ordering-goods-online-internet-store-online-shopping-niche-e-commerce-website-mother-buying-babies-clothes-footwear-toys-infant-accessories_335657-2345.jpg?w=2000",
     },
     {
         id: 4,
-        title: "Cloths",
+        title: "Clothes",
         subTitle: "",
         image_Url:
             "https://www.shift4shop.com/2015/images/industries/clothing/clothing-apparel.png",
