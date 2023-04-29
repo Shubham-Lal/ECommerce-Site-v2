@@ -10,7 +10,8 @@ import {
   LoginPage,
   SignupPage,
   ActivationPage,
-  ProductsPage
+  ProductsPage,
+  BestSellingPage,
 } from "./Routes";
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -36,6 +37,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/best-selling" element={<BestSellingPage />} />
       </Routes>
       <ToastContainer
         position="top-center"

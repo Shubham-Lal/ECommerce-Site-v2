@@ -19,7 +19,6 @@ const ProductsPage = () => {
             const products = productData && productData.filter((item) => item.category === categoryData);
             setProducts(products);
         }
-        // window.scrollTo(0, 0);
     }, [categoryData]);
 
     return (

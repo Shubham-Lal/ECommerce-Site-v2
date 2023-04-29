@@ -31,9 +31,13 @@ export const footerCompanyLinks = [
         name: "Careers",
         link: "/careers",
     },
+    // {
+    //     name: "Store Locations",
+    //     link: "/store",
+    // },
     {
-        name: "Store Locations",
-        link: "/store",
+        name: "Events",
+        link: "/events",
     },
     {
         name: "Our Blog",
