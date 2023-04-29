@@ -52,15 +52,15 @@ export const footerCompanyLinks = [
 export const footerItemLinks = [
     {
         name: "Mobile & Tablets",
-        link: "/products?category=Mobile%20&%20Tablets",
+        link: "/products?category=Mobile%20and%20Tablets",
     },
     {
         name: "Computers & Laptop",
-        link: "/products?category=Computers%20&%20Laptops",
+        link: "/products?category=Computers%20and%20Laptops",
     },
     {
         name: "Music & Gaming",
-        link: "/products?category=Music%20&%20Gaming",
+        link: "/products?category=Music%20and%20Gaming",
     },
     {
         name: "Clothes",
@@ -68,7 +68,7 @@ export const footerItemLinks = [
     },
     {
         name: "Cosmetic & Body Care",
-        link: "/products?category=cosmetics%20&%20body%20care",
+        link: "/products?category=Cosmetics%20and%20Body%20Care",
     },
 ];
 

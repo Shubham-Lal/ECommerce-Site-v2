@@ -12,7 +12,7 @@ const Events = () => {
                     </h1>
                 </div>
 
-                <div className="w-full grid mb-12">
+                <div className="w-full grid">
                     <EventCard />
                 </div>
             </div>

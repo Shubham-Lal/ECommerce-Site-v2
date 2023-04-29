@@ -12,6 +12,7 @@ import {
   ActivationPage,
   ProductsPage,
   BestSellingPage,
+  EventsPage,
 } from "./Routes";
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -38,6 +39,7 @@ function App() {
         <Route path="/activation/:activationToken" element={<ActivationPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/best-selling" element={<BestSellingPage />} />
+        <Route path="/events" element={<EventsPage />} />
       </Routes>
       <ToastContainer
         position="top-center"
