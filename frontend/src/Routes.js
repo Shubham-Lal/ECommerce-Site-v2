@@ -6,6 +6,7 @@ import ActivationPage from "./pages/ActivationPage";
 import ProductsPage from "./pages/ProductsPage";
 import BestSellingPage from "./pages/BestSellingPage";
 import EventsPage from "./pages/EventsPage";
+import FAQsPage from "./pages/FAQsPage";
 
 export {
     ErrorPage,
@@ -16,4 +17,5 @@ export {
     ProductsPage,
     BestSellingPage,
     EventsPage,
+    FAQsPage,
 };

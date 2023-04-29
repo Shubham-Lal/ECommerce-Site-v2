@@ -8,37 +8,41 @@ import {
 import { Link } from 'react-router-dom';
 import { footerCompanyLinks, footerItemLinks, footerSupportLinks } from '../../static/data';
 
-const Footer = () => {
+const Footer = ({ hideSubscription }) => {
     return (
         <div className="bg-[#000] text-white">
             {/* Newsletter */}
-            <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#342AC8] py-7">
-                <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5 font-Poppins">
-                    <span className="text-[#56D879]">
-                        Subscribe
-                    </span>
-                    <span> us for latest updates</span><br />
-                    <span>about events & offers</span>
-                </h1>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Enter your email..."
-                        className="text-gray-800 sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
-                        required
-                    />
-                    <button className="bg-[#56D879] hover:bg-teal-500 duration-200 px-5 py-2.5 rounded-md text-white md:w-auto w-full">
-                        <span>Subscribe</span>
-                    </button>
+            {!hideSubscription && (
+                <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#342AC8] py-7">
+                    <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5 font-Poppins">
+                        <span className="text-[#56D879]">
+                            Subscribe
+                        </span>
+                        <span> us for latest updates</span><br />
+                        <span>about events & offers</span>
+                    </h1>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Enter your email..."
+                            className="text-gray-800 sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
+                            required
+                        />
+                        <button className="bg-[#56D879] hover:bg-teal-500 duration-200 px-5 py-2.5 rounded-md text-white md:w-auto w-full">
+                            <span>Subscribe</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Footer */}
             <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-6 sm:px-8 px-5 py-16 sm:text-center items-center">
                 <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
-                    <h5 className="text-[40px] font-Roboto font-semibold">
-                        CertyStore
-                    </h5>
+                    <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+                        <h5 className="text-[40px] font-Roboto font-semibold cursor-pointer">
+                            CertyStore
+                        </h5>
+                    </Link>
                     <br />
                     <p>
                         Whether it be products, services, or experiences, we make sure to deliver precisely what you desire, with utmost quality and satisfaction.
