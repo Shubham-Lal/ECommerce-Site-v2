@@ -21,8 +21,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Store from './redux/store';
 import { loadUser } from './redux/actions/user';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { serverAPI } from './server';
 
 function App() {
+  axios.get(`${serverAPI}/user`); // Backend Call at "serverAPI/api/v2/user"
   const { loading } = useSelector((state) => state.user);
   const [remember, setRemember] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("Token"));
