@@ -127,7 +127,7 @@ const Login = ({ setToken, remember, setRemember }) => {
               <h4>
                 New here?
               </h4>
-              <Link to="/signup" className="text-blue-600 pl-2">
+              <Link to="/user-signup" className="text-blue-600 pl-2">
                 Create an account
               </Link>
             </div>

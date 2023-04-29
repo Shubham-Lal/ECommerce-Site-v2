@@ -87,6 +87,7 @@ const Footer = ({ hideSubscription }) => {
                             <Link
                                 to={link.link}
                                 className="text-gray-400 hover:text-teal-400 duration-200 text-sm cursor-pointer leading-5"
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 {link.name}
                             </Link>
@@ -104,6 +105,7 @@ const Footer = ({ hideSubscription }) => {
                             <Link
                                 to={link.link}
                                 className="text-gray-400 hover:text-teal-400 duration-200 text-sm cursor-pointer leading-5"
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 {link.name}
                             </Link>
@@ -121,6 +123,7 @@ const Footer = ({ hideSubscription }) => {
                             <Link
                                 to={link.link}
                                 className="text-gray-400 hover:text-teal-400 duration-200 text-sm cursor-pointer leading-5"
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 {link.name}
                             </Link>

@@ -28,8 +28,8 @@ function App() {
   axios.get(`${serverAPI}/user`); // Backend Call at "serverAPI/api/v2/user"
   const { loading } = useSelector((state) => state.user);
   const [remember, setRemember] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("Token"));
-  if (remember) localStorage.setItem("Token", token);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  if (remember) localStorage.setItem("token", token);
 
   useEffect(() => {
     Store.dispatch(loadUser(token));
@@ -43,8 +43,8 @@ function App() {
             <Routes>
               <Route path="*" element={<ErrorPage />} />
               <Route path="/" element={<HomePage />} />
-              <Route path="/auth" element={<LoginPage setToken={setToken} remember={remember} setRemember={setRemember} />} />
-              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/user-login" element={<LoginPage setToken={setToken} remember={remember} setRemember={setRemember} />} />
+              <Route path="/user-signup" element={<SignupPage />} />
               <Route path="/activation/:activationToken" element={<ActivationPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/best-selling" element={<BestSellingPage />} />

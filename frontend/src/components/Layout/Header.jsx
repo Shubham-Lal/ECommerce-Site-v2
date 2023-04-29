@@ -10,6 +10,7 @@ import Dropdown from './Dropdown';
 import Navbar from './Navbar';
 import { useSelector } from "react-redux";
 import { serverURL } from '../../server';
+import Cart from '../Cart/Cart';
 
 const Header = ({ activeHeading }) => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -18,6 +19,7 @@ const Header = ({ activeHeading }) => {
     const [headerActive, setHeaderActive] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState("Categories");
+    const [cartPopup, setCartPopup] = useState(false);
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
@@ -56,9 +58,9 @@ const Header = ({ activeHeading }) => {
                             className="h-[40px] w-full px-2 border-[2px] border-[#3957DB] rounded-md"
                         />
                         <AiOutlineSearch size={30} className="absolute right-2 top-1.5 cursor-pointer hover:text-[#3957DB]" />
-                        {/* {searchTerm.length > 0 && searchData && searchData.length !== 0 ? ( */}
-                        {searchData && searchData.length !== 0 ? (
-                            <div className="absolute min-h-[30vh] min-w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
+                        {searchTerm.length > 2 && searchData && searchData.length !== 0 ? (
+                            // <div className="absolute min-h-[30vh] min-w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
+                            <div className="absolute min-h-fit min-w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
                                 {searchData.map((item, index) => {
                                     const name = item.name;
                                     const productName = name.replace(/\s+/g, "-");
@@ -149,7 +151,7 @@ const Header = ({ activeHeading }) => {
                         </div>
                         {/* SHOPPING CART */}
                         <div className={`${styles.normalFlex}`}>
-                            <div className="relative cursor-pointer mr-[15px] group">
+                            <div className="relative cursor-pointer mr-[15px] group" onClick={() => setCartPopup(true)}>
                                 <AiOutlineShoppingCart
                                     className="w-[30px] h-[30px] transition-all group-hover:scale-75"
                                     color="rgb(255 255 255 / 83%)"
@@ -173,7 +175,7 @@ const Header = ({ activeHeading }) => {
                                         />
                                     </Link>
                                 ) : (
-                                    <Link to="/auth">
+                                    <Link to="/user-login">
                                         <CgProfile
                                             className="w-[30px] h-[30px] transition-all group-hover:scale-75"
                                             color="rgb(255 255 255 / 83%)"
@@ -183,6 +185,16 @@ const Header = ({ activeHeading }) => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className={`fixed top-0 right-0 ${cartPopup ? "w-full" : "w-0"} transition-all duration-500 ease-linear h-screen bg-[#0000004b] z-10`}>
+                <div
+                    className={`fixed top-0 right-0 min-h-screen h-screen ${cartPopup ? "w-[25%]" : "w-0 transition-all duration-500"} bg-white flex flex-col justify-between rounded-l-3xl shadow-2xl`}
+                >
+                    {cartPopup ? (
+                        <Cart cartPopup={cartPopup} setCartPopup={setCartPopup} />
+                    ) : null}
                 </div>
             </div>
         </>
