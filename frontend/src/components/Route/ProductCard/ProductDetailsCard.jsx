@@ -45,7 +45,7 @@ const ProductDetailsCard = ({ setQuickView, product }) => {
                     <h3 className={`${styles.shop_name}`}>
                       {product.shop.name}
                     </h3>
-                    <h5 className="pb-3 text-[15px] flex flex-row items-center">
+                    <h5 className="pb-3 text-[15px] flex items-center">
                       {product.shop.ratings}
                       <AiFillStar
                         className="mr-2 cursor-pointer"

@@ -16,10 +16,10 @@ const CountDown = () => {
 
         if (difference > 0) {
             timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) & 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60),
+                Days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                Hours: Math.floor((difference / (1000 * 60 * 60)) & 24),
+                Mins: Math.floor((difference / 1000 / 60) % 60),
+                Sec: Math.floor((difference / 1000) % 60),
             }
         }
 
@@ -40,7 +40,7 @@ const CountDown = () => {
     });
 
     return (
-        <div>
+        <div className="w-full text-center">
             {timerComponent.length ? timerComponent : <span className="text-[red] text-[25px]">Time's Up!</span>}
         </div>
     )
