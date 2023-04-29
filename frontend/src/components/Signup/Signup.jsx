@@ -4,7 +4,7 @@ import { RxAvatar } from "react-icons/rx";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../server";
+import { serverAPI } from "../../server";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,9 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!name || !email || !password) return toast.warn("Fill up all the fields!");
+        if(password.length < 6) return toast.warn("Password should be greater than or equal to 6 characters!");
+        if(!avatar) return toast.warn("Upload your profile picture!");
         setLoading(true);
         const config = { headers: { "Content-Type": "multipart/form-data" } };
         const newForm = new FormData();
@@ -31,7 +34,7 @@ const Signup = () => {
         newForm.append("name", name);
         newForm.append("email", email);
         newForm.append("password", password);
-        await axios.post(`${server}/user/create-user`, newForm, config)
+        await axios.post(`${serverAPI}/user/create-user`, newForm, config)
             .then((res) => {
                 toast.success(res.data.message)
                 setEmail("");
@@ -71,7 +74,6 @@ const Signup = () => {
                                     type="text"
                                     name="text"
                                     autoComplete="name"
-                                    required
                                     placeholder="Enter Full Name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
@@ -92,7 +94,6 @@ const Signup = () => {
                                     type="email"
                                     name="email"
                                     autoComplete="email"
-                                    required
                                     value={email}
                                     placeholder="Enter Email"
                                     onChange={(e) => setEmail(e.target.value)}
@@ -113,7 +114,6 @@ const Signup = () => {
                                     type={visible ? "text" : "password"}
                                     name="password"
                                     autoComplete="current-password"
-                                    required
                                     value={password}
                                     placeholder="Enter Password"
                                     onChange={(e) => setPassword(e.target.value)}

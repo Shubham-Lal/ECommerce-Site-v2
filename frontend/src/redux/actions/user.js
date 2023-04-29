@@ -1,5 +1,5 @@
 import axios from "axios";
-import { server } from "../../server";
+import { serverAPI } from "../../server";
 
 // Load User
 export const loadUser = (token) => async (dispatch) => {
@@ -8,7 +8,7 @@ export const loadUser = (token) => async (dispatch) => {
             dispatch({
                 type: "LoadUserRequest",
             });
-            const { data } = await axios.post(`${server}/user/getuser`, { token }, { withCredentials: true });
+            const { data } = await axios.post(`${serverAPI}/user/getuser`, { token }, { withCredentials: true });
             dispatch({
                 type: "LoadUserSuccess",
                 payload: data.user,
