@@ -8,6 +8,7 @@ import BestSellingPage from "./pages/BestSellingPage";
 import EventsPage from "./pages/EventsPage";
 import FAQsPage from "./pages/FAQsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProfilePage from "./pages/ProfilePage";
 
 export {
     ErrorPage,
@@ -20,4 +21,5 @@ export {
     EventsPage,
     FAQsPage,
     ProductDetailsPage,
+    ProfilePage,
 };

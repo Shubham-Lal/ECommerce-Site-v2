@@ -1,3 +1,9 @@
+import { AiOutlineCreditCard, AiOutlineLogout, AiOutlineMessage } from "react-icons/ai";
+import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
+import { RxPerson } from "react-icons/rx";
+import { MdOutlineTrackChanges } from "react-icons/md";
+import { TbAddressBook } from "react-icons/tb";
+
 // Navigation Data
 export const navItems = [
     {
@@ -382,6 +388,43 @@ export const categoriesData = [
             "https://searchspring.com/wp-content/uploads/2022/10/Hero-Image-Platform-Others-2.png",
     },
 ];
+
+// Profile Sidebar Data
+export const profileSidebarData = [
+    {
+        name: "Profile",
+        icon: <RxPerson />
+    },
+    {
+        name: "Orders",
+        icon: <HiOutlineShoppingBag />
+    },
+    {
+        name: "Refunds",
+        icon: <HiOutlineReceiptRefund />
+    },
+    {
+        name: "Inbox",
+        icon: <AiOutlineMessage />,
+        link: "/inbox"
+    },
+    {
+        name: "Track Order",
+        icon: <MdOutlineTrackChanges />
+    },
+    {
+        name: "Payment Methods",
+        icon: <AiOutlineCreditCard />
+    },
+    {
+        name: "Address",
+        icon: <TbAddressBook />
+    },
+    {
+        name: "Logout",
+        icon: <AiOutlineLogout />
+    },
+]
 
 // Product Data
 export const productData = [

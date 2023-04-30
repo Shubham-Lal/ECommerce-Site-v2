@@ -19,8 +19,16 @@ connectDatabase();
 
 // Server
 const PORT = process.env.PORT;
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+});
+
+// On Backend Call at "/"
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "CertyStore's API",
+    });
 });
 
 // Unhandled Promise Rejection

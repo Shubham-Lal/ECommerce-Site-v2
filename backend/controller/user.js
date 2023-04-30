@@ -11,14 +11,6 @@ const catchAsyncError = require("../middleware/catchAsyncError.js");
 const sendToken = require("../utils/jwtToken.js");
 const { isAuthenticated } = require("../middleware/auth.js");
 
-// On Backend Call at "/api/v2/user"
-router.get("/", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "CertyStore's API",
-    });
-});
-
 // User Registration at "/api/v2/user/create-user"
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
     try {
