@@ -20,6 +20,7 @@ const FAQ = () => {
 
   return (
     <div className={`${styles.section} my-8`}>
+      <div className="h-[5rem] 800px:h-0" />
       <h2 className="text-3xl font-bold text-gray-900 mb-8 font-Poppins">
         FAQs
       </h2>

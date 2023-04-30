@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { serverURL } from '../../server';
 import Cart from '../Popup/Cart';
 import Wishlist from '../Popup/Wishlist';
+import { RxCross1 } from 'react-icons/rx';
 
 const Header = ({ activeHeading }) => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -22,6 +23,7 @@ const Header = ({ activeHeading }) => {
     const [selectedCategory, setSelectedCategory] = useState("Categories");
     const [cartPopup, setCartPopup] = useState(false);
     const [wishlistPopup, setWishlistPopup] = useState(false);
+    const [headerSidebar, setHeaderSidebar] = useState(false);
 
     const handleSearchChange = (e) => {
         const term = e.target.value;
@@ -190,7 +192,7 @@ const Header = ({ activeHeading }) => {
                 </div>
             </div>
 
-            {/* Checkout Cart */}
+            {/* Checkout Cart Popup */}
             <div className={`fixed top-0 right-0 ${cartPopup ? "w-full" : "w-0"} transition-all duration-500 ease-linear h-screen bg-[#0000004b] z-10`}>
                 <div
                     className={`fixed top-0 right-0 min-h-screen h-screen ${cartPopup ? "w-[25%]" : "w-0 transition-all duration-500"} bg-white flex flex-col justify-between rounded-l-3xl shadow-2xl`}
@@ -200,8 +202,8 @@ const Header = ({ activeHeading }) => {
                     ) : null}
                 </div>
             </div>
-            
-            {/* Wishlist Cart */}
+
+            {/* Wishlist Cart Popup */}
             <div className={`fixed top-0 right-0 ${wishlistPopup ? "w-full" : "w-0"} transition-all duration-500 ease-linear h-screen bg-[#0000004b] z-10`}>
                 <div
                     className={`fixed top-0 right-0 min-h-screen h-screen ${wishlistPopup ? "w-[25%]" : "w-0 transition-all duration-500"} bg-white flex flex-col justify-between rounded-l-3xl shadow-2xl`}
@@ -210,6 +212,134 @@ const Header = ({ activeHeading }) => {
                         <Wishlist setWishlistPopup={setWishlistPopup} />
                     ) : null}
                 </div>
+            </div>
+
+            {/* Mobile Header */}
+            <div className="fixed z-50 top-0 left-0 w-full 800px:hidden h-[70px] bg-[#fff] shadow-2xl rounded-b-2xl">
+                <div className="w-full flex items-center justify-between mt-3.5">
+                    <div>
+
+                        <BiMenuAltLeft
+                            size={40}
+                            className="ml-4"
+                            onClick={() => setHeaderSidebar(true)}
+                        />
+                    </div>
+                    <div>
+                        <Link to="/">
+                            <h1 className="text-[30px] text-[#F6BA00] font-Poppins font-bold">
+                                CERTYSTORE
+                            </h1>
+                        </Link>
+                    </div>
+                    <div>
+                        <div className="relative mr-[20px] group">
+                            <AiOutlineShoppingCart size={30} className="group-hover:scale-75 duration-200" />
+                            <span
+                                className="absolute right-0 top-0 rounded-full bg-[#3BC177] w-4 h-4 p-0 m-0 text-white font-mono text-[12px] leading-tight text-center"
+                            >
+                                0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Header Sidebar */}
+                {headerSidebar && (
+                    <div className="fixed bg-[#0000005F] z-20 top-0 left-0 w-full h-full">
+                        <div className="fixed w-[60%] h-screen bg-[#fff] top-0 left-0 z-10 rounded-r-2xl overflow-y-scroll">
+                            {/* Top */}
+                            <div className="w-full flex justify-between pr-3">
+                                <div>
+                                    <div className="relative mr-[15px] group">
+                                        <AiOutlineHeart size={30} className="mt-5 ml-3 group-hover:scale-75 duration-200" />
+                                        <span
+                                            className="absolute right-0 top-0 rounded-full bg-[#3BC177] w-4 h-4 p-0 m-0 text-white font-mono text-[12px] leading-tight text-center"
+                                        >
+                                            0
+                                        </span>
+                                    </div>
+                                </div>
+                                <RxCross1
+                                    size={30}
+                                    className="ml-4 mt-5 hover:scale-75 duration-200"
+                                    onClick={() => setHeaderSidebar(false)}
+                                />
+                            </div>
+
+                            {/* Search Widget */}
+                            <div className="my-8 w-full m-auto h-[40px] relative">
+                                <input
+                                    type="search"
+                                    value={searchTerm}
+                                    onChange={handleSearchChange}
+                                    placeholder="Search CertyStore"
+                                    className="h-[40px] w-full px-2 focus:border-[#3957DB] border-[2px] rounded-md"
+                                />
+                                {searchTerm.length > 2 && searchData && searchData.length !== 0 ? (
+                                    <div className="absolute rounded-b-xl min-h-fit w-full bg-slate-50 shadow z-[9] p-3">
+                                        {searchData.map((item, index) => {
+                                            const name = item.name;
+                                            const productName = name.replace(/\s+/g, "-");
+                                            return (
+                                                <Link
+                                                    to={`/product/${productName}`}
+                                                    onClick={() => setHeaderSidebar(false)}
+                                                    key={index}
+                                                >
+                                                    <div className="w-full flex items-center justify-start py-2">
+                                                        <img
+                                                            src={item.image_Url[0].url}
+                                                            className="w-[40px] h-[40px] mr-2"
+                                                            alt={productName}
+                                                        />
+                                                        <h1>
+                                                            {item.name}
+                                                        </h1>
+                                                    </div>
+                                                </Link>
+                                            )
+                                        })}
+                                    </div>
+                                ) : null}
+                            </div>
+
+                            <Navbar
+                                activeHeading={activeHeading}
+                                navItems={navItems}
+                            />
+
+                            {/* Seller */}
+                            <div className={`${styles.button2} group relative ml-5 !rounded-[4px]`}>
+                                <Link to="/seller">
+                                    <h1 className="text-[#fff] flex items-center">
+                                        Become Seller <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
+                                    </h1>
+                                </Link>
+                            </div>
+                            <br /><br /><br />
+
+                            <div>
+                                {!isAuthenticated ? (
+                                    <div className="flex w-full justify-between px-5">
+                                        <Link to="/user-login" className="text-[18px] pr-[10px] text-[#000000b7]">Login</Link>
+                                        <Link to="/user-signup" className="text-[18px] text-[#000000b7]">Signup</Link>
+                                    </div>
+                                ) : (
+                                    <div className="flex w-full justify-center">
+                                        <Link to="/profile">
+                                            <img
+                                                className="w-[60px] h-[60px] rounded-full border-[3px] border-[#17DD1F]"
+                                                src={`${serverURL}/${user.avatar}`}
+                                                alt="user"
+                                            />
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     )

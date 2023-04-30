@@ -19,6 +19,7 @@ const ProductDetailsPage = () => {
   return (
     <div>
       <Header />
+      <br /><br />
       <ProductDetails product={product} />
       {product && <SuggestedProduct product={product} />}
       <Footer />

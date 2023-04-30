@@ -14,7 +14,7 @@ const ProfileContent = ({ activeTab }) => {
 
   return (
     user && (
-      <div className="w-full overflow-x-hidden">
+      <div className="w-full mt-[2.5rem] overflow-x-hidden">
         {activeTab === 0 && <ProfileComponent user={user} />}
         {activeTab === 1 && <OrderComponent />}
         {activeTab === 2 && <RefundComponent />}

@@ -7,6 +7,7 @@ const EventsPage = () => {
   return (
     <div>
       <Header activeHeading={4} />
+      <div className="bg-white h-[5rem] 800px:h-0" />
       <EventCard active />
       <EventCard active />
       <Footer />
