@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Layout/Header';
 import Footer from '../components/Layout/Footer';
 import ProductDetails from '../components/Products/ProductDetails';
+import SuggestedProduct from '../components/Products/SuggestedProduct';
 import { useParams } from 'react-router-dom';
 import { productData } from '../static/data';
 
@@ -19,6 +20,7 @@ const ProductDetailsPage = () => {
     <div>
       <Header />
       <ProductDetails product={product} />
+      {product && <SuggestedProduct product={product} />}
       <Footer />
     </div>
   )
