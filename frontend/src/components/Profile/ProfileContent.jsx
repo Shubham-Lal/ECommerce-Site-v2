@@ -14,7 +14,7 @@ const ProfileContent = ({ activeTab }) => {
 
   return (
     user && (
-      <div className="w-full">
+      <div className="w-full overflow-x-hidden">
         {activeTab === 0 && <ProfileComponent user={user} />}
         {activeTab === 1 && <OrderComponent />}
         {activeTab === 2 && <RefundComponent />}
@@ -56,81 +56,81 @@ const ProfileComponent = ({ user }) => {
 
       <br /><br />
 
-      <div className="w-full px-5">
+      <div className="w-full pl-5">
         <form onSubmit={handleSubmitInfo}>
-          <div className="w-full flex pb-3">
-            <div className="w-[50%]">
+          <div className="w-full block 800px:flex pb-3">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                *Full Name
+                Full Name
               </label>
               <input
                 type="text"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132] mb-4 800px:mb-0`}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="w-[50%]">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                *Email Address
+                Email Address
               </label>
               <input
                 type="email"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132] mb-1 800px:mb-0`}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="w-full flex pb-3">
-            <div className="w-[50%]">
+          <div className="w-full block 800px:flex pb-3">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                *Phone Number
+                Phone Number
               </label>
               <input
                 type="number"
                 placeholder="Add Phone Number"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132] mb-4 800px:mb-0`}
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
-            <div className="w-[50%]">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                *Zip Code
+                Zip Code
               </label>
               <input
                 type="number"
                 placeholder="Add Zip Code"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132] mb-1 800px:mb-0`}
                 value={zipCode}
                 onChange={(e) => setZipCode(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="w-full flex pb-3">
-            <div className="w-[50%]">
+          <div className="w-full block 800px:flex pb-3">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                *Address 1
+                Address 1
               </label>
               <input
                 type="text"
                 placeholder="Add your delivery address"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132] mb-4 800px:mb-0`}
                 value={address1}
                 onChange={(e) => setAddress1(e.target.value)}
               />
             </div>
-            <div className="w-[50%]">
+            <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Address 2
+                Address 2 <span className="text-gray-600 text-[12px]">Optional</span>
               </label>
               <input
                 type="text"
                 placeholder="Add other address"
-                className={`${styles.input} !w-[95%] focus:border-[#3AD132]`}
+                className={`${styles.input} w-full 800px:w-[95%] focus:border-[#3AD132]`}
                 value={address2}
                 onChange={(e) => setAddress2(e.target.value)}
               />
@@ -165,21 +165,12 @@ const OrderComponent = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    // { field: "id", headerName: "Order ID", minWidth: "md:min-w-150", flex: "md:flex-0.7" },
     {
       field: "status",
       headerName: "Status",
       minWidth: 130,
       flex: 0.7,
-      // cellClassName: (params) => {
-      //   return params.getValue(params.id, "status") === "Delivered"
-      //     ? "greenColor"
-      //     : "redColor";
-      // },
-      // cellClassName: (params) => {
-      //   return params.row.status === "Delivered"
-      //     ? "greenColor"
-      //     : "redColor";
-      // },
       cellClassName: (params) =>
         params.value === "Delivered" ? "text-[green]" : "text-[#FFAE42]",
     },
@@ -230,11 +221,15 @@ const OrderComponent = () => {
   });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className="pl-[1.3rem]">
+      <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
+        All Orders
+      </h1>
       <DataGrid
+        className="md:min-w-150 md:flex-0.7"
         rows={row}
         columns={columns}
-        pageSizeOptions={[25, 50, 100]}
+        pageSizeOptions={[1, 25, 50, 100]}
         disableRowSelectionOnClick
         autoHeight
       />
@@ -323,7 +318,10 @@ const RefundComponent = () => {
   });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className="pl-[1.3rem]">
+      <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
+        All Refunds
+      </h1>
       <DataGrid
         rows={row}
         columns={columns}
@@ -417,7 +415,10 @@ const TrackOrderComponent = () => {
     });
 
   return (
-    <div className="pl-8 pt-1">
+    <div className="pl-[1.3rem]">
+      <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
+        All Orders
+      </h1>
       <DataGrid
         rows={row}
         columns={columns}
@@ -432,7 +433,7 @@ const TrackOrderComponent = () => {
 const PaymentMethodComponent = () => {
   return (
     <div className="w-full px-5">
-      <div className="flex w-full items-center justify-between">
+      <div className="block 800px:flex w-full items-center justify-between">
         <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
           Payment Methods
         </h1>
@@ -445,7 +446,7 @@ const PaymentMethodComponent = () => {
 
       <br />
 
-      <div className="w-full bg-white h-[70px] rounded-[4px] flex items-center px-3 shadow justify-between pr-10 select-none">
+      <div className="w-full bg-white h-[70px] rounded-[4px] flex items-center px-3 shadow justify-between 800px:pr-10 select-none">
         <div className="flex items-center">
           <img
             src="/Visa.svg"
@@ -455,7 +456,7 @@ const PaymentMethodComponent = () => {
             Shubham Lal
           </h5>
         </div>
-        <div className="pl-8 flex items-center">
+        <div className="hidden 800px:flex pl-8 items-center">
           <h6>
             4040 **** **** **40
           </h6>
@@ -477,7 +478,7 @@ const PaymentMethodComponent = () => {
 const AddressComponent = () => {
   return (
     <div className="w-full px-5">
-      <div className="flex w-full items-center justify-between">
+      <div className="block 800px:flex w-full items-center justify-between">
         <h1 className="text-[25px] font-[600] text-[#000000ba] pb-2">
           My Addresses
         </h1>
@@ -496,12 +497,12 @@ const AddressComponent = () => {
             Current
           </h5>
         </div>
-        <div className="pl-8 flex items-center">
+        <div className="hidden 800px:flex pl-8 items-center">
           <h6>
             13th Lane Vidya Sagar Park, Kolkata-700070
           </h6>
         </div>
-        <div className="pl-8 flex items-center">
+        <div className="hidden 800px:flex pl-8 items-center">
           <h6>
             (+91) 98765-43210
           </h6>

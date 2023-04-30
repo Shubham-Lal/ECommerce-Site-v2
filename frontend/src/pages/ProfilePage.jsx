@@ -10,8 +10,8 @@ const ProfilePage = () => {
     return (
         <div>
             <Header />
-            <div className={`${styles.section} flex bg-[#F5F5F5] py-10`}>
-                <div className="w-[335px]">
+            <div className={`${styles.section} flex bg-[#F5F5F5] py-10 min-h-screen 800px:min-h-fit`}>
+                <div className="w-[50px] 800px:w-[335px] sticky my-auto 800px:my-0">
                     <ProfileSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
                 </div>
                 <ProfileContent activeTab={activeTab} />

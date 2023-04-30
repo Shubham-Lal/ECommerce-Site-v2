@@ -25,7 +25,7 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
             onClick={() => setActiveTab(index)}
           >
             <i className={`text-[20px] text-[${activeTab === index ? "#342AC8" : ""}]`}>{item.icon}</i>
-            <span className={`${activeTab === index ? "text-[#342AC8] font-[600]" : ""} pl-3`}>
+            <span className={`${activeTab === index ? "text-[#342AC8] font-[600]" : ""} pl-3 hidden 800px:block`}>
               {item.name}
             </span>
           </div>
@@ -36,7 +36,7 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
         onClick={() => setActiveTab(7) || handleLogout()}
       >
         <i className={`text-[20px] text-[${activeTab === 7 ? "#342AC8" : ""}]`}>{profileSidebarData[7].icon}</i>
-        <span className={`${activeTab === 7 ? "text-[#342AC8] font-[600]" : ""} pl-3`}>
+        <span className={`${activeTab === 7 ? "text-[#342AC8] font-[600]" : ""} pl-3 hidden 800px:block`}>
           {profileSidebarData[7].name}
         </span>
       </div>
