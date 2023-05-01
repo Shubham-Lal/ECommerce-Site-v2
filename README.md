@@ -1,5 +1,7 @@
 # ECommerce Site | Version-2
 
+## Currently in development mode. Check back soon...☺️
+
 Current List of accessible URLs of [CertyStore](https://certystore-v2.pages.dev):
 
 * [Home Page](https://certystore-v2.pages.dev)
