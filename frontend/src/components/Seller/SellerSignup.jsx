@@ -37,7 +37,7 @@ const SellerSignup = () => {
                     Register as a Seller
                 </h2>
             </div>
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md font-Roboto">
+            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem] font-Roboto">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form className="space-y-6" onSubmit={handleCreateSeller}>
 
@@ -169,7 +169,7 @@ const SellerSignup = () => {
                             </div>
                         </div>
 
-                        {/* SHOP LOGO */}
+                        {/* SHOP LOGO FILE INPUT */}
                         <div>
                             <label
                                 htmlFor="avatar"
@@ -226,6 +226,7 @@ const SellerSignup = () => {
                                 {loading ? "Creating..." : "CREATE"}
                             </button>
                         </div>
+
                         {/* NEW USER */}
                         <div className={`${styles.normalFlex} w-full`}>
                             <h4>
