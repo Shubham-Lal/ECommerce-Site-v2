@@ -9,6 +9,9 @@ import EventsPage from "./pages/EventsPage";
 import FAQsPage from "./pages/FAQsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProfilePage from "./pages/ProfilePage";
+import CheckoutPage from "./pages/CheckoutPage";
+import PaymentPage from "./pages/PaymentPage";
+import SellerSignupPage from "./pages/SellerSignupPage";
 
 export {
     ErrorPage,
@@ -22,4 +25,7 @@ export {
     FAQsPage,
     ProductDetailsPage,
     ProfilePage,
+    CheckoutPage,
+    PaymentPage,
+    SellerSignupPage,
 };

@@ -15,6 +15,7 @@ const Login = ({ setToken, remember, setRemember }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!email || !password) return toast.warn("Fill up all the fields!");
     setLoading(true);
     axios.post(`${serverAPI}/user/auth`, {
       email, password,
@@ -54,17 +55,18 @@ const Login = ({ setToken, remember, setRemember }) => {
                   focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   type="email"
                   name="email"
+                  id="email"
                   value={email}
                   placeholder="Enter Email"
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
-                  required
                 />
               </div>
             </div>
+
             {/* PASSWORD INPUT FIELD */}
             <div>
-              <label htmlFor="email" className="block text-sm select-none font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm select-none font-medium text-gray-700">
                 Your Password
               </label>
               <div className="mt-1 relative">
@@ -73,11 +75,11 @@ const Login = ({ setToken, remember, setRemember }) => {
                   focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   type={`${visible ? "text" : "password"}`}
                   name="password"
+                  id="password"
                   value={password}
                   placeholder="Enter Password"
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
-                  required
                 />
                 {visible
                   ? <AiOutlineEye
@@ -93,6 +95,7 @@ const Login = ({ setToken, remember, setRemember }) => {
                 }
               </div>
             </div>
+
             {/* USER OPTIONS */}
             <div className={`${styles.normalFlex} justify-between`}>
               <div className={`${styles.normalFlex}`}>
@@ -113,6 +116,7 @@ const Login = ({ setToken, remember, setRemember }) => {
                 </Link>
               </div>
             </div>
+
             {/* LOGIN BUTTON */}
             <div>
               <button
@@ -122,6 +126,7 @@ const Login = ({ setToken, remember, setRemember }) => {
                 {loading ? "Verifying..." : "LOGIN"}
               </button>
             </div>
+
             {/* NEW USER */}
             <div className={`${styles.normalFlex} w-full`}>
               <h4>

@@ -64,7 +64,7 @@ const Signup = () => {
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label
-                                htmlFor="email"
+                                htmlFor="name"
                                 className="block text-sm font-medium text-gray-700"
                             >
                                 Your Full Name
@@ -72,7 +72,8 @@ const Signup = () => {
                             <div className="mt-1">
                                 <input
                                     type="text"
-                                    name="text"
+                                    name="name"
+                                    id="name"
                                     autoComplete="name"
                                     placeholder="Enter Full Name"
                                     value={name}
@@ -93,6 +94,7 @@ const Signup = () => {
                                 <input
                                     type="email"
                                     name="email"
+                                    id="email"
                                     autoComplete="email"
                                     value={email}
                                     placeholder="Enter Email"
@@ -113,6 +115,7 @@ const Signup = () => {
                                 <input
                                     type={visible ? "text" : "password"}
                                     name="password"
+                                    id="password"
                                     autoComplete="current-password"
                                     value={password}
                                     placeholder="Enter Password"

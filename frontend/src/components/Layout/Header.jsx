@@ -89,7 +89,7 @@ const Header = ({ activeHeading }) => {
 
                     {/* SELLER */}
                     <div className={`${styles.button2} group relative`}>
-                        <Link to="/seller">
+                        <Link to="/seller-signup">
                             <h1 className="text-[#fff] flex items-center">
                                 Become Seller <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
                             </h1>
@@ -311,7 +311,7 @@ const Header = ({ activeHeading }) => {
 
                             {/* Seller */}
                             <div className={`${styles.button2} group relative ml-5 !rounded-[4px]`}>
-                                <Link to="/seller">
+                                <Link to="/seller-signup">
                                     <h1 className="text-[#fff] flex items-center">
                                         Become Seller <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
                                     </h1>
