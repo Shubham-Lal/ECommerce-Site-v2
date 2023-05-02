@@ -41,7 +41,7 @@ const SellerSignup = () => {
         newForm.append("zipCode", zipCode);
         newForm.append("password", password);
         newForm.append("file", avatar);
-        await axios.post(`${serverAPI}/seller/create-seller`, newForm, config)
+        await axios.post(`${serverAPI}/seller/signup-seller`, newForm, config)
             .then((res) => {
                 toast.success(res.data.message)
                 setShopName("");

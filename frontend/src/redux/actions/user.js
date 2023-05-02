@@ -22,3 +22,25 @@ export const loadUser = (token) => async (dispatch) => {
         }
     }
 };
+
+// Load Seller
+export const loadSeller = (sellerToken) => async (dispatch) => {
+    if (sellerToken !== null) {
+        try {
+            dispatch({
+                type: "LoadSellerRequest",
+            });
+            const { data } = await axios.post(`${serverAPI}/seller/getseller`, { sellerToken }, { withCredentials: true });
+            dispatch({
+                type: "LoadSellerSuccess",
+                payload: data.seller,
+            });
+        }
+        catch (error) {
+            dispatch({
+                type: "LoadSellerFail",
+                payload: error.response.data.message,
+            });
+        }
+    }
+};

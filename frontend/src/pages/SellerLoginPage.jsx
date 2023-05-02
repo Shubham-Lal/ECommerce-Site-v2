@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import SellerSignup from '../components/Seller/SellerSignup';
+import React, { useEffect } from 'react'
+import SellerLogin from '../components/Seller/SellerLogin'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const SellerSignupPage = () => {
+const SellerLoginPage = ({ setSellerToken, sellerRemember, setSellerRemember }) => {
   const { isSellerAuthenticated, seller } = useSelector((state) => state.seller);
   const navigate = useNavigate();
 
@@ -15,9 +15,9 @@ const SellerSignupPage = () => {
 
   return (
     <div>
-      <SellerSignup />
+      <SellerLogin setSellerToken={setSellerToken} sellerRemember={sellerRemember} setSellerRemember={setSellerRemember} />
     </div>
   )
 }
 
-export default SellerSignupPage
+export default SellerLoginPage

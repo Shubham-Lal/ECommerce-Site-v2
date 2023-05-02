@@ -2,7 +2,7 @@ import './App.css';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
 import {
   ErrorPage,
@@ -19,17 +19,20 @@ import {
   ProfilePage,
   CheckoutPage,
   PaymentPage,
+  SellerPage,
   SellerSignupPage,
+  SellerLoginPage,
 } from "./Routes";
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Store from './redux/store';
-import { loadUser } from './redux/actions/user';
+import { loadSeller, loadUser } from './redux/actions/user';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { serverURL } from './server';
 import ProtectedRoute from './ProtectedRoute';
+import SellerProtectedRoute from './SellerProtectedRoute';
 
 function App() {
   // Backend Call at "serverURL/"
@@ -37,17 +40,22 @@ function App() {
     axios.get(`${serverURL}/`);
   }, []);
   const { loading, isAuthenticated } = useSelector((state) => state.user);
+  const { isLoading, isSellerAuthenticated } = useSelector((state) => state.seller);
   const [remember, setRemember] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   if (remember) localStorage.setItem("token", token);
+  const [sellerRemember, setSellerRemember] = useState(false);
+  const [sellerToken, setSellerToken] = useState(localStorage.getItem("sellerToken"));
+  if (sellerRemember) localStorage.setItem("sellerToken", sellerToken);
 
   useEffect(() => {
     Store.dispatch(loadUser(token));
-  }, [token]);
+    Store.dispatch(loadSeller(sellerToken));
+  }, [token, sellerToken]);
 
   return (
     <>
-      {loading ? null
+      {loading || isLoading ? null
         : (
           <BrowserRouter>
             <Routes>
@@ -73,7 +81,13 @@ function App() {
               <Route path="/best-selling" element={<BestSellingPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/faq" element={<FAQsPage />} />
+              <Route path="/seller/:id" element={
+                <SellerProtectedRoute isSellerAuthenticated={isSellerAuthenticated}>
+                  <SellerPage />
+                </SellerProtectedRoute>
+              } />
               <Route path="/seller-signup" element={<SellerSignupPage />} />
+              <Route path="/seller-login" element={<SellerLoginPage setSellerToken={setSellerToken} sellerRemember={sellerRemember} setSellerRemember={setSellerRemember} />} />
             </Routes>
             <ToastContainer
               position="bottom-center"

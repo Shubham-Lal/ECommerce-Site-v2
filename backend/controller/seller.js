@@ -9,9 +9,10 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const sendToken = require("../utils/jwtToken.js");
+const { isSellerAuthenticated } = require("../middleware/auth.js");
 
-// Seller Registration at "/api/v2/seller/create-seller"
-router.post("/create-seller", upload.single("file"), async (req, res, next) => {
+// Seller Registration at "/api/v2/seller/signup-seller"
+router.post("/signup-seller", upload.single("file"), async (req, res, next) => {
     try {
         const { email } = req.body;
         const sellerEmail = await Seller.findOne({ email });
@@ -92,7 +93,43 @@ router.post("/shop/activation", catchAsyncError(async (req, res, next) => {
             password,
             avatar
         });
-        sendToken(seller, 201, res);
+        sendToken(seller, "seller", 201, res);
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// Seller Login at "/api/v2/seller/login-seller"
+router.post("/login-seller", catchAsyncError(async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        if (!email) return next(new ErrorHandler("Please enter your Email!", 400));
+        if (!password) return next(new ErrorHandler("Please enter your Password!", 400));
+
+        const seller = await Seller.findOne({ email }).select("+password");
+        if (!seller) return next(new ErrorHandler("Seller doesn't exists!", 400));
+
+        const isPasswordValid = await seller.comparePassword(password);
+        if (!isPasswordValid) return next(new ErrorHandler("Try again with correct credentials!", 400));
+
+        sendToken(seller, "seller", 201, res);
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// Load Seller
+router.post("/getseller", isSellerAuthenticated, catchAsyncError(async (req, res, next) => {
+    try {
+        const seller = await Seller.findById(req.seller._id);
+        if (!seller) return next(new ErrorHandler("Seller doesn't exists!", 500));
+
+        res.status(200).json({
+            success: true,
+            seller,
+        });
     }
     catch (error) {
         return next(new ErrorHandler(error.message, 500));

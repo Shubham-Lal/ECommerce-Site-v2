@@ -87,7 +87,7 @@ router.post("/activation", catchAsyncError(async (req, res, next) => {
             avatar,
             password,
         });
-        sendToken(user, 201, res);
+        sendToken(user, "user", 201, res);
     }
     catch (error) {
         return next(new ErrorHandler(error.message, 500));
@@ -107,7 +107,7 @@ router.post("/auth", catchAsyncError(async (req, res, next) => {
         const isPasswordValid = await user.comparePassword(password);
         if (!isPasswordValid) return next(new ErrorHandler("Try again with correct credentials!", 400));
 
-        sendToken(user, 201, res);
+        sendToken(user, "user", 201, res);
     }
     catch (error) {
         return next(new ErrorHandler(error.message, 500));
