@@ -1,11 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsShop } from 'react-icons/bs';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { serverAPI } from '../../server';
 
 const SellerSignup = () => {
+    const navigate = useNavigate();
     const [shopName, setShopName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [address, setAddress] = useState("");
@@ -28,6 +31,35 @@ const SellerSignup = () => {
         if (password.length < 6) return toast.warn("Password should be greater than or equal to 6 characters!");
         if (!avatar) return toast.warn("Please upload your Shop Logo to proceed!");
         setLoading(true);
+
+        const config = { headers: { "Content-Type": "multipart/form-data" } };
+        const newForm = new FormData();
+        newForm.append("shopName", shopName);
+        newForm.append("email", email);
+        newForm.append("phoneNumber", phoneNumber);
+        newForm.append("address", address);
+        newForm.append("zipCode", zipCode);
+        newForm.append("password", password);
+        newForm.append("file", avatar);
+        await axios.post(`${serverAPI}/seller/create-seller`, newForm, config)
+            .then((res) => {
+                toast.success(res.data.message)
+                setShopName("");
+                setEmail("");
+                setPhoneNumber("");
+                setAddress("");
+                setZipCode("");
+                setPassword("");
+                setVisible(false);
+                setAvatar(null);
+                navigate("/seller-login");
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (

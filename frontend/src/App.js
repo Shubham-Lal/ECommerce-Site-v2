@@ -9,7 +9,8 @@ import {
   HomePage,
   LoginPage,
   SignupPage,
-  ActivationPage,
+  UserActivationPage,
+  SellerActivationPage,
   ProductsPage,
   BestSellingPage,
   EventsPage,
@@ -59,7 +60,8 @@ function App() {
                   <ProfilePage />
                 </ProtectedRoute>
               } />
-              <Route path="/activation/:activationToken" element={<ActivationPage />} />
+              <Route path="/activation/:activationToken" element={<UserActivationPage />} />
+              <Route path="/seller/activation/:activationToken" element={<SellerActivationPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:name" element={<ProductDetailsPage />} />
               <Route path="/checkout" element={

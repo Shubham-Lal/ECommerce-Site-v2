@@ -2,7 +2,8 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import ActivationPage from "./pages/ActivationPage";
+import UserActivationPage from "./pages/UserActivationPage";
+import SellerActivationPage from "./pages/SellerActivationPage";
 import ProductsPage from "./pages/ProductsPage";
 import BestSellingPage from "./pages/BestSellingPage";
 import EventsPage from "./pages/EventsPage";
@@ -18,7 +19,8 @@ export {
     HomePage,
     LoginPage,
     SignupPage,
-    ActivationPage,
+    UserActivationPage,
+    SellerActivationPage,
     ProductsPage,
     BestSellingPage,
     EventsPage,

@@ -26,9 +26,13 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-// Routes
+// User's Routes
 const user = require("./controller/user.js");
 app.use("/api/v2/user", user);
+
+// Seller's Routes
+const seller = require("./controller/seller.js");
+app.use("/api/v2/seller", seller);
 
 // Error Handling
 app.use(ErrorHandler);

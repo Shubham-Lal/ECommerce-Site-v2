@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const sellerSchema = new mongoose.Schema({
     name: {
@@ -23,7 +25,7 @@ const sellerSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        default: "seller",
+        default: "Seller",
     },
     password: {
         type: String,
@@ -42,6 +44,28 @@ const sellerSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    resetPasswordToken: String,
+    resetPasswordTime: Date,
 });
+
+// Hash password
+sellerSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) {
+        next();
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+});
+
+// JWT Token
+sellerSchema.methods.getJwtToken = function () {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: process.env.JWT_EXPIRES,
+    });
+};
+
+// Comapre Password
+sellerSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
 
 module.exports = mongoose.model("Seller", sellerSchema);
