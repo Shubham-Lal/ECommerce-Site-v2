@@ -16,6 +16,10 @@ const ProductDetailsPage = () => {
     setProduct(product);
   }, [productName]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Header />
