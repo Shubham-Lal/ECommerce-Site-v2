@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { serverAPI } from '../../server';
 import { toast } from "react-toastify";
 
 const SellerLogin = ({ setSellerToken, sellerRemember, setSellerRemember }) => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
@@ -22,6 +23,7 @@ const SellerLogin = ({ setSellerToken, sellerRemember, setSellerRemember }) => {
             .then((res) => {
                 setSellerToken(res.data.token);
                 toast.success("Login Success!");
+                navigate("/dashboard");
             })
             .catch((err) => {
                 toast.error(err.response.data.message);

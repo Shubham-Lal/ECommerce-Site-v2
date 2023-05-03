@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const SellerLoginPage = ({ setSellerToken, sellerRemember, setSellerRemember }) => {
-  const { isSellerAuthenticated, seller } = useSelector((state) => state.seller);
+  const { isLoading, isSellerAuthenticated } = useSelector((state) => state.seller);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isSellerAuthenticated) {
-      navigate(`/seller/${seller._id}`);
+      navigate(`/dashboard`);
     }
-  }, [isSellerAuthenticated, navigate, seller?._id]);
+  }, [isLoading, isSellerAuthenticated, navigate]);
 
   return (
     <div>
