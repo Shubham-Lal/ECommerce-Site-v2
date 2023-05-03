@@ -1,8 +1,12 @@
-import { AiOutlineCreditCard, AiOutlineLogout, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineCreditCard, AiOutlineFolderAdd, AiOutlineGift, AiOutlineLogout, AiOutlineMessage } from "react-icons/ai";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
-import { RxPerson } from "react-icons/rx";
-import { MdOutlineTrackChanges } from "react-icons/md";
+import { RxDashboard, RxPerson } from "react-icons/rx";
+import { MdOutlineLocalOffer, MdOutlineTrackChanges } from "react-icons/md";
 import { TbAddressBook } from "react-icons/tb";
+import { FiPackage, FiShoppingBag } from "react-icons/fi";
+import { VscNewFile } from "react-icons/vsc";
+import { CiMoneyBill, CiSettings } from "react-icons/ci";
+import { BiMessageSquareDetail } from "react-icons/bi";
 
 // Navigation Data
 export const navItems = [
@@ -148,6 +152,101 @@ export const productDetailsData = [
     {
         tab: "Seller Information",
         info: "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
+    },
+]
+
+// Profile Sidebar Data
+export const profileSidebarData = [
+    {
+        name: "Profile",
+        icon: <RxPerson />
+    },
+    {
+        name: "Orders",
+        icon: <HiOutlineShoppingBag />
+    },
+    {
+        name: "Refunds",
+        icon: <HiOutlineReceiptRefund />
+    },
+    {
+        name: "Inbox",
+        icon: <AiOutlineMessage />,
+        link: "/inbox"
+    },
+    {
+        name: "Track Order",
+        icon: <MdOutlineTrackChanges />
+    },
+    {
+        name: "Payment Methods",
+        icon: <AiOutlineCreditCard />
+    },
+    {
+        name: "Address",
+        icon: <TbAddressBook />
+    },
+    {
+        name: "Logout",
+        icon: <AiOutlineLogout />
+    },
+]
+
+export const sellerDasboardSidebar = [
+    {
+        name: "Dashboard",
+        icon: <RxDashboard />,
+        url: "/dashboard"
+    },
+    {
+        name: "All Orders",
+        icon: <FiShoppingBag />,
+        url: "/dashboard-orders"
+    },
+    {
+        name: "My Products",
+        icon: <FiPackage />,
+        url: "/dashboard-products"
+    },
+    {
+        name: "Add Product",
+        icon: <AiOutlineFolderAdd />,
+        url: "/dashboard-create-product"
+    },
+    {
+        name: "All Events",
+        icon: <MdOutlineLocalOffer />,
+        url: "/dashboard-events"
+    },
+    {
+        name: "Create Event",
+        icon: <VscNewFile />,
+        url: "/dashboard-create-event"
+    },
+    {
+        name: "Payout",
+        icon: <CiMoneyBill />,
+        url: "/dashboard-payout"
+    },
+    {
+        name: "Inbox",
+        icon: <BiMessageSquareDetail />,
+        url: "/dashboard-inbox"
+    },
+    {
+        name: "Discount Coupons",
+        icon: <AiOutlineGift />,
+        url: "/dashboard/coupons"
+    },
+    {
+        name: "Refunds",
+        icon: <HiOutlineReceiptRefund />,
+        url: "/dashboard-refunds"
+    },
+    {
+        name: "Settings",
+        icon: <CiSettings />,
+        url: "/dashboard-settings"
     },
 ]
 
@@ -388,43 +487,6 @@ export const categoriesData = [
             "https://searchspring.com/wp-content/uploads/2022/10/Hero-Image-Platform-Others-2.png",
     },
 ];
-
-// Profile Sidebar Data
-export const profileSidebarData = [
-    {
-        name: "Profile",
-        icon: <RxPerson />
-    },
-    {
-        name: "Orders",
-        icon: <HiOutlineShoppingBag />
-    },
-    {
-        name: "Refunds",
-        icon: <HiOutlineReceiptRefund />
-    },
-    {
-        name: "Inbox",
-        icon: <AiOutlineMessage />,
-        link: "/inbox"
-    },
-    {
-        name: "Track Order",
-        icon: <MdOutlineTrackChanges />
-    },
-    {
-        name: "Payment Methods",
-        icon: <AiOutlineCreditCard />
-    },
-    {
-        name: "Address",
-        icon: <TbAddressBook />
-    },
-    {
-        name: "Logout",
-        icon: <AiOutlineLogout />
-    },
-]
 
 // Product Data
 export const productData = [

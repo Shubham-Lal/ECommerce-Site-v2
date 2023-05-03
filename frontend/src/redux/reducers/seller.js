@@ -1,7 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
-    // isSellerAuthenticated: true,
+    isLoading: true,
 };
 
 const LoadSellerRequest = createAction('LoadSellerRequest');
