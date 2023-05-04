@@ -11,15 +11,14 @@ const Loader = () => {
 
     return (
         <div className="w-full h-screen flex items-center justify-center">
-            <Lottie
-                loop={true}
-                autoplay={true}
-                // animationData={[loaderAnimation1, loaderAnimation2].Math.floor(Math.random() * 2)}
-                animationData={animation[Math.floor(Math.random() * 2)]}
-                width={300}
-                height={300}
-                rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
-            />
+            <div className="w-[200px] h-[200px]">
+                <Lottie
+                    loop={true}
+                    autoplay={true}
+                    animationData={animation[Math.floor(Math.random() * 2)]}
+                    rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+                />
+            </div>
         </div>
     )
 }

@@ -16,6 +16,7 @@ import { RxCross1 } from 'react-icons/rx';
 
 const Header = ({ activeHeading }) => {
     const { isAuthenticated, user } = useSelector((state) => state.user);
+    const { isSellerAuthenticated } = useSelector((state) => state.seller);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchData, setSearchData] = useState([]);
     const [headerActive, setHeaderActive] = useState(false);
@@ -89,9 +90,9 @@ const Header = ({ activeHeading }) => {
 
                     {/* SELLER */}
                     <div className={`${styles.button2} group relative`}>
-                        <Link to="/seller-signup">
+                        <Link to={isSellerAuthenticated ? "/dashboard" : "/seller-signup"}>
                             <h1 className="text-[#fff] flex items-center">
-                                Become Seller <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
+                                {isSellerAuthenticated ? "Dashboard" : "Become Seller"} <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
                             </h1>
                         </Link>
                     </div>
@@ -267,6 +268,25 @@ const Header = ({ activeHeading }) => {
                                 />
                             </div>
 
+                            <div>
+                                {!isAuthenticated ? (
+                                    <div className="flex w-full justify-between px-5">
+                                        <Link to="/user-login" className="text-[18px] pr-[10px] text-[#000000b7]">Login</Link>
+                                        <Link to="/user-signup" className="text-[18px] text-[#000000b7]">Signup</Link>
+                                    </div>
+                                ) : (
+                                    <div className="flex w-full justify-center">
+                                        <Link to="/profile">
+                                            <img
+                                                className="w-[60px] h-[60px] rounded-full border-[3px] border-[#17DD1F]"
+                                                src={`${serverURL}/${user.avatar}`}
+                                                alt="user"
+                                            />
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+
                             {/* Search Widget */}
                             <div className="my-8 w-full m-auto h-[40px] relative">
                                 <input
@@ -311,31 +331,11 @@ const Header = ({ activeHeading }) => {
 
                             {/* Seller */}
                             <div className={`${styles.button2} group relative ml-5 !rounded-[4px]`}>
-                                <Link to="/seller-signup">
+                                <Link to={isSellerAuthenticated ? "/dashboard" : "/seller-signup"}>
                                     <h1 className="text-[#fff] flex items-center">
-                                        Become Seller <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
+                                        {isSellerAuthenticated ? "Dashboard" : "Become Seller"} <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
                                     </h1>
                                 </Link>
-                            </div>
-                            <br /><br /><br />
-
-                            <div>
-                                {!isAuthenticated ? (
-                                    <div className="flex w-full justify-between px-5">
-                                        <Link to="/user-login" className="text-[18px] pr-[10px] text-[#000000b7]">Login</Link>
-                                        <Link to="/user-signup" className="text-[18px] text-[#000000b7]">Signup</Link>
-                                    </div>
-                                ) : (
-                                    <div className="flex w-full justify-center">
-                                        <Link to="/profile">
-                                            <img
-                                                className="w-[60px] h-[60px] rounded-full border-[3px] border-[#17DD1F]"
-                                                src={`${serverURL}/${user.avatar}`}
-                                                alt="user"
-                                            />
-                                        </Link>
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>

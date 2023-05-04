@@ -44,7 +44,7 @@ const Footer = ({ hideSubscription }) => {
                         </h5>
                     </Link>
                     <br />
-                    <p>
+                    <p className="text-center 800px:text-justify">
                         Whether it be products, services, or experiences, we make sure to deliver precisely what you desire, with utmost quality and satisfaction.
                     </p>
                     {/* Social Links */}

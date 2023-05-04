@@ -82,13 +82,13 @@ function App() {
             <SellerPage />
           </SellerProtectedRoute>
         } />
+        <Route path="/seller-signup" element={<SellerSignupPage />} />
+        <Route path="/seller-login" element={<SellerLoginPage setSellerToken={setSellerToken} sellerRemember={sellerRemember} setSellerRemember={setSellerRemember} />} />
         <Route path="/dashboard" element={
           <SellerProtectedRoute>
             <SellerDashboardPage />
           </SellerProtectedRoute>
         } />
-        <Route path="/seller-signup" element={<SellerSignupPage />} />
-        <Route path="/seller-login" element={<SellerLoginPage setSellerToken={setSellerToken} sellerRemember={sellerRemember} setSellerRemember={setSellerRemember} />} />
       </Routes>
       <ToastContainer
         position="bottom-center"
