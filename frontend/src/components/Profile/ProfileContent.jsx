@@ -61,7 +61,7 @@ const ProfileComponent = ({ user }) => {
           <div className="w-full block 800px:flex pb-3">
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Full Name
+                Full Name<span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -72,7 +72,7 @@ const ProfileComponent = ({ user }) => {
             </div>
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Email Address
+                Email Address<span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
@@ -86,7 +86,7 @@ const ProfileComponent = ({ user }) => {
           <div className="w-full block 800px:flex pb-3">
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Phone Number
+                Phone Number<span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -98,7 +98,7 @@ const ProfileComponent = ({ user }) => {
             </div>
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Zip Code
+                Zip Code<span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -113,7 +113,7 @@ const ProfileComponent = ({ user }) => {
           <div className="w-full block 800px:flex pb-3">
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Address 1
+                Address 1<span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -125,7 +125,7 @@ const ProfileComponent = ({ user }) => {
             </div>
             <div className="w-[100%] 800px:w-[50%]">
               <label className="block pb-2">
-                Address 2 <span className="text-gray-600 text-[12px]">Optional</span>
+                Address 2
               </label>
               <input
                 type="text"

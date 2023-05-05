@@ -211,7 +211,7 @@ export const sellerDasboardSidebar = [
     {
         name: "Add Product",
         icon: <AiOutlineFolderAdd />,
-        url: "/dashboard-create-product"
+        url: "/dashboard-add-product"
     },
     {
         name: "All Events",
