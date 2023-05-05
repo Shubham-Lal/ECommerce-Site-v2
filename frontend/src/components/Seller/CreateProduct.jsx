@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../styles/styles';
 import { categoriesData } from '../../static/data';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { toast } from "react-toastify";
+import { addProduct } from '../../redux/actions/product';
 
 const CreateProduct = () => {
-    // const navigate = useNavigate();
-    // const { seller } = useSelector((state) => state.seller);
-    // const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { seller } = useSelector((state) => state.seller);
+    const { success, error } = useSelector((state) => state.products);
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
@@ -19,6 +21,15 @@ const CreateProduct = () => {
     const [stock, setStock] = useState("");
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (success) {
+            toast.success("Product added successfully!");
+            navigate("/dashboard");
+            window.location.reload();
+        }
+        if (error) toast.error(error);
+    }, [dispatch, success, error, navigate]);
 
     const handleImageUpload = (e) => {
         let files = Array.from(e.target.files);
@@ -31,10 +42,26 @@ const CreateProduct = () => {
         if (category === "Choose a category" || !category) return toast.warn("Select a product category!");
         if (images.length === 0) return toast.warn("Please upload product images!");
         setLoading(true);
+
+        const newForm = new FormData();
+        images.forEach((image) => {
+            newForm.append("images", image);
+        });
+        newForm.append("name", name);
+        newForm.append("description", description);
+        newForm.append("category", category);
+        newForm.append("tags", tags);
+        newForm.append("originalPrice", originalPrice);
+        newForm.append("discountPrice", discountPrice);
+        newForm.append("stock", stock);
+        newForm.append("sellerId", seller._id);
+
+        dispatch(addProduct(newForm));
+        setLoading(false);
     };
 
     return (
-        <div className="w-[90%] 800px:w-[50%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
+        <div className="w-[90%] xl:w-[50%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
             <h5 className="text-[25px] 800px:text-[30px] font-Poppins text-center">
                 Add Product
             </h5>
@@ -58,14 +85,16 @@ const CreateProduct = () => {
                     <label htmlFor="description" className="pb-2">
                         Description<span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <textarea
                         id="description"
                         type="text"
-                        className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
+                        rows={8}
+                        cols={30}
+                        className="rounded-[5px] outline-none border border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full pt-2 px-3"
                         value={description}
                         placeholder="Your product description"
                         onChange={(e) => setDescription(e.target.value)}
-                    />
+                    ></textarea>
                 </div>
                 <br />
                 <div>
@@ -173,7 +202,7 @@ const CreateProduct = () => {
                     </div>
                 </div>
                 <br />
-                <button disabled={loading} onSubmit={handleProductSubmit} className={`${styles.button} ${loading && "cursor-not-allowed"} w-full h-[42px] rounded hover:bg-amber-500 hover:rounded-sm duration-200`}>
+                <button disabled={loading} onSubmit={handleProductSubmit} className={`${styles.button} ${loading && "cursor-not-allowed bg-amber-500"} w-full h-[42px] rounded hover:rounded-sm duration-200`}>
                     <span className="text-[#fff] flex items-center">
                         {loading ? "Adding" : "Submit"}
                     </span>

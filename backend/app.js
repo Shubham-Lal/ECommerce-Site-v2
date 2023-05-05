@@ -34,6 +34,10 @@ app.use("/api/v2/user", user);
 const seller = require("./controller/seller.js");
 app.use("/api/v2/seller", seller);
 
+// Product's Routes
+const product = require("./controller/product.js");
+app.use("/api/v2/product", product);
+
 // Error Handling
 app.use(ErrorHandler);
 
