@@ -26,3 +26,53 @@ export const addProduct = (newForm) => async (dispatch) => {
         });
     }
 };
+
+// Get All Products
+export const getAllProducts = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "clearErrors",
+        });
+        dispatch({
+            type: "GetAllProductRequest",
+        });
+
+        const { data } = await axios.get(`${serverAPI}/product/get-products/${id}`);
+
+        dispatch({
+            type: "GetAllProductSuccess",
+            payload: data.products,
+        });
+    }
+    catch (error) {
+        dispatch({
+            type: "GetAllProductFail",
+            payload: error.response.data.message,
+        });
+    }
+};
+
+// Delete a product
+export const deleteProduct = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "clearErrors",
+        });
+        dispatch({
+            type: "DeleteProductRequest",
+        });
+
+        const { data } = await axios.delete(`${serverAPI}/product/delete-product/${id}`);
+
+        dispatch({
+            type: "DeleteProductSuccess",
+            payload: data.message,
+        });
+    }
+    catch (error) {
+        dispatch({
+            type: "DeleteProductFail",
+            payload: error.response.data.message,
+        });
+    }
+};

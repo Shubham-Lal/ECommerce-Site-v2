@@ -23,7 +23,11 @@ import {
   SellerSignupPage,
   SellerLoginPage,
 } from "./routes/Routes";
-import { SellerDashboardPage, AddProduct } from './routes/SellerRoutes';
+import {
+  SellerDashboardPage,
+  AddProduct,
+  GetProducts,
+} from './routes/SellerRoutes';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -93,6 +97,11 @@ function App() {
         <Route path="/dashboard-add-product" element={
           <SellerProtectedRoute>
             <AddProduct />
+          </SellerProtectedRoute>
+        } />
+        <Route path="/dashboard-products" element={
+          <SellerProtectedRoute>
+            <GetProducts />
           </SellerProtectedRoute>
         } />
       </Routes>
