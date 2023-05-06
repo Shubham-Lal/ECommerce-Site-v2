@@ -106,7 +106,7 @@ const SellerLogin = ({ setSellerToken, sellerRemember, setSellerRemember }) => {
                                     id="remember-me"
                                     onChange={() => setSellerRemember(prev => !prev)}
                                 />
-                                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                                <label htmlFor="remember-me" className="mt-[2px] ml-2 block text-sm text-gray-900">
                                     Remember me
                                 </label>
                             </div>

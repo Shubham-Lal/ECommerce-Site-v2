@@ -1,7 +1,8 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
-    isAuthenticated: false
+    loading: false,
+    isAuthenticated: false,
 };
 
 const LoadUserRequest = createAction('LoadUserRequest');

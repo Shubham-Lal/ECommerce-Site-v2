@@ -12,8 +12,8 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
     if (!isAuthenticated) return;
     localStorage.removeItem("token");
     toast.success("Logout Successfull!");
-    window.location.reload(true);
     navigate("/user-login");
+    window.location.reload(true);
   };
 
   return (
