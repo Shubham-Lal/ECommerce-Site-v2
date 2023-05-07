@@ -5,7 +5,7 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 const Seller = require("../model/seller.js");
 const Product = require("../model/product.js");
 const ErrorHandler = require("../utils/ErrorHandler");
-const { isSellerAuthenticated } = require("../middleware/auth");
+// const { isSellerAuthenticated } = require("../middleware/auth");
 
 // Add Product at "/api/v2/product/add-product"
 router.post("/add-product", upload.array("images"), catchAsyncError(async (req, res, next) => {

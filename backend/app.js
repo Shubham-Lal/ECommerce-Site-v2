@@ -38,6 +38,10 @@ app.use("/api/v2/seller", seller);
 const product = require("./controller/product.js");
 app.use("/api/v2/product", product);
 
+// Event's Routes
+const event = require("./controller/event.js");
+app.use("/api/v2/event", event);
+
 // Error Handling
 app.use(ErrorHandler);
 

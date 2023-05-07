@@ -61,7 +61,7 @@ const CreateProduct = () => {
     };
 
     return (
-        <div className="w-[90%] xl:w-[50%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
+        <div className="w-[90%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
             <h5 className="text-[25px] 800px:text-[30px] font-Poppins text-center">
                 Add Product
             </h5>
@@ -202,7 +202,7 @@ const CreateProduct = () => {
                     </div>
                 </div>
                 <br />
-                <button disabled={loading} onSubmit={handleProductSubmit} className={`${styles.button} ${loading && "cursor-not-allowed bg-amber-500"} w-full h-[42px] rounded hover:rounded-sm duration-200`}>
+                <button disabled={loading} onSubmit={handleProductSubmit} className={`${styles.button} ${loading && "cursor-not-allowed"} hover:bg-amber-500 w-full h-[42px] rounded hover:rounded-sm duration-200`}>
                     <span className="text-[#fff] flex items-center">
                         {loading ? "Adding" : "Submit"}
                     </span>
