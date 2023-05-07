@@ -27,6 +27,7 @@ import {
   SellerDashboardPage,
   AddProduct,
   GetProducts,
+  AddEvent,
 } from './routes/SellerRoutes';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -102,6 +103,11 @@ function App() {
         <Route path="/dashboard-products" element={
           <SellerProtectedRoute>
             <GetProducts />
+          </SellerProtectedRoute>
+        } />
+        <Route path="/dashboard-create-event" element={
+          <SellerProtectedRoute>
+            <AddEvent />
           </SellerProtectedRoute>
         } />
       </Routes>

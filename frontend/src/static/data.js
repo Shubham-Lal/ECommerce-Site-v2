@@ -214,7 +214,7 @@ export const sellerDasboardSidebar = [
         url: "/dashboard-add-product"
     },
     {
-        name: "All Events",
+        name: "My Events",
         icon: <MdOutlineLocalOffer />,
         url: "/dashboard-events"
     },
