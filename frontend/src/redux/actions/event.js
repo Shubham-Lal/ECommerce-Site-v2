@@ -26,3 +26,53 @@ export const createEvent = (newForm) => async (dispatch) => {
         });
     }
 };
+
+// Get All Events
+export const getAllEvents = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "clearErrors",
+        });
+        dispatch({
+            type: "GetAllEventRequest",
+        });
+
+        const { data } = await axios.get(`${serverAPI}/event/get-events/${id}`);
+
+        dispatch({
+            type: "GetAllEventSuccess",
+            payload: data.events,
+        });
+    }
+    catch (error) {
+        dispatch({
+            type: "GetAllEventFail",
+            payload: error.response.data.message,
+        });
+    }
+};
+
+// Delete a event
+export const deleteEvent = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "clearErrors",
+        });
+        dispatch({
+            type: "DeleteEventRequest",
+        });
+
+        const { data } = await axios.delete(`${serverAPI}/event/delete-event/${id}`);
+
+        dispatch({
+            type: "DeleteEventSuccess",
+            payload: data.message,
+        });
+    }
+    catch (error) {
+        dispatch({
+            type: "DeleteEventFail",
+            payload: error.response.data.message,
+        });
+    }
+};

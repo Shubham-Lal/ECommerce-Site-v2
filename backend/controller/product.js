@@ -5,7 +5,7 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 const Seller = require("../model/seller.js");
 const Product = require("../model/product.js");
 const ErrorHandler = require("../utils/ErrorHandler");
-// const { isSellerAuthenticated } = require("../middleware/auth");
+const fs = require("fs");
 
 // Add Product at "/api/v2/product/add-product"
 router.post("/add-product", upload.array("images"), catchAsyncError(async (req, res, next) => {
@@ -50,8 +50,22 @@ router.get("/get-products/:id", catchAsyncError(async (req, res, next) => {
 router.delete("/delete-product/:id", catchAsyncError(async (req, res, next) => {
     try {
         const productId = req.params.id;
-        const product = await Product.findByIdAndDelete(productId);
-        if (!product) return next(ErrorHandler("Product not found!", 500));
+        const productData = await Product.findById(productId);
+        if (!productData) return next(ErrorHandler("Product not found!", 500));
+
+        productData.images.forEach((imageURL) => {
+            const fileName = imageURL;
+            const filePath = `uploads/${fileName}`;
+
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ message: "Error deleting file" });
+                }
+            });
+        });
+
+        await Product.findByIdAndDelete(productId);
 
         res.status(201).json({
             success: true,
