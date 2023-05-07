@@ -215,7 +215,7 @@ const OrderComponent = () => {
     row.push({
       id: item._id,
       itemsQty: item.orderItems.length,
-      total: "US$ " + item.totalPrice,
+      total: "₹ " + item.totalPrice,
       status: item.orderStatus
     });
   });
@@ -312,7 +312,7 @@ const RefundComponent = () => {
     row.push({
       id: item._id,
       itemsQty: item.orderItems.length,
-      total: "US$ " + item.totalPrice,
+      total: "₹ " + item.totalPrice,
       status: item.orderStatus
     });
   });
@@ -409,7 +409,7 @@ const TrackOrderComponent = () => {
       row.push({
         id: item._id,
         itemsQty: item.orderItems.length,
-        total: "US$ " + item.totalPrice,
+        total: "₹ " + item.totalPrice,
         status: item.orderStatus,
       });
     });

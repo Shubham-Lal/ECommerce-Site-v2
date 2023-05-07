@@ -73,10 +73,10 @@ const ProductCard = ({ product }) => {
                     <div className="py-2 flex items-center justify-between">
                         <div className="flex items-center">
                             <h5 className={`${styles.productDiscountPrice}`}>
-                                {product.price === 0 ? product.price : product.discount_price}$
+                                ₹{product.price === 0 ? product.price : product.discount_price}
                             </h5>
                             <h4 className={`${styles.price}`}>
-                                {product.price ? product.price + " $" : null}
+                                {product.price ? "₹" + product.price : null}
                             </h4>
                         </div>
                         <span className="font-[400] text-[17px] text-[#68D284]">

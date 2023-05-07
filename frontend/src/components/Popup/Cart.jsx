@@ -48,12 +48,12 @@ const Cart = ({ setCartPopup }) => {
                 <Link to="/checkout">
                     <div className={`h-[45px] flex items-center justify-center w-[100%] bg-[#E44343] rounded-[5px]`}>
                         <h1 className="text-[#fff] text-[18px] font-[600]">
-                            Checkout Now (USD$2227)
+                            Checkout Now (INR₹ 2227)
                         </h1>
                     </div>
                 </Link>
             </div>
-            
+
             <br />
 
             <div className="w-full border-t h-screen overflow-y-auto">
@@ -104,10 +104,10 @@ const CartItem = ({ item }) => {
                         {item.name.length > 20 ? item.name.slice(0, 20) + "..." : item.name}
                     </h1>
                     <h4 className="font-[400] text-[15px] text-[#00000082]">
-                        ${item.price} X {value}
+                        ₹{item.price} X {value}
                     </h4>
                     <h4 className="font-[600] text-[17px] text-[#D02222] font-Roboto pt-[3px]">
-                        US${totalPrice}
+                        INR₹ {totalPrice}
                     </h4>
                 </div>
                 <RxCross1

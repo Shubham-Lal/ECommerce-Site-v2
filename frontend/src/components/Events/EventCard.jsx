@@ -25,10 +25,10 @@ const EventCard = ({ active }) => {
                 <div className="flex items-center py-2 justify-between">
                     <div className="flex items-center">
                         <h5 className="font-[500] text-[18px] text-[#D55B45] pr-3 line-through">
-                            1099$
+                            ₹1099
                         </h5>
                         <h5 className="font-bold text-[20px] text-[#333] font-Roboto">
-                            1049$
+                            ₹1049
                         </h5>
                     </div>
                     <span className="pr-3 font-[400] text-[17px] text-[#44A55E]">

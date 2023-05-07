@@ -75,10 +75,10 @@ const ProductDetailsCard = ({ setQuickView, product }) => {
                 </p>
                 <div className="flex items-center pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
-                    {product.discount_price}$
+                    ₹{product.discount_price}
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {product.price ? product.price + "$" : null}
+                    {product.price ? "₹" + product.price : null}
                   </h3>
                 </div>
 

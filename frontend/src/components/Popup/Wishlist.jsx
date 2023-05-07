@@ -75,7 +75,7 @@ const WishlistItem = ({ item }) => {
                         {item.name.length > 20 ? item.name.slice(0, 20) + "..." : item.name}
                     </h1>
                     <h4 className="font-[600] text-[17px] text-[#D02222] font-Roboto pt-[3px]">
-                        US${item.price}
+                        INR₹ {item.price}
                     </h4>
                 </div>
                 <div className="">
