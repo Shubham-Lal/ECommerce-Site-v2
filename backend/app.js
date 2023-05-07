@@ -42,6 +42,10 @@ app.use("/api/v2/product", product);
 const event = require("./controller/event.js");
 app.use("/api/v2/event", event);
 
+// Coupon's Routes
+const coupon = require("./controller/couponCode.js");
+app.use("/api/v2/coupon", coupon);
+
 // Error Handling
 app.use(ErrorHandler);
 

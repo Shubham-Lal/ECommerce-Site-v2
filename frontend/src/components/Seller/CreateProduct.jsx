@@ -61,7 +61,7 @@ const CreateProduct = () => {
     };
 
     return (
-        <div className="w-[90%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
+        <div className="w-full 800px:w-[90%] bg-white shadow h-[calc(100vh-80px)] 800px:h-[80vh] rounded-[4px] p-3 overflow-y-auto">
             <h5 className="text-[25px] 800px:text-[30px] font-Poppins text-center">
                 Add Product
             </h5>
@@ -128,32 +128,40 @@ const CreateProduct = () => {
                     />
                 </div>
                 <br />
-                <div>
-                    <label htmlFor="originalPrice" className="pb-2">
-                        Original Price
-                    </label>
-                    <input
-                        id="originalPrice"
-                        type="number"
-                        className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
-                        value={originalPrice}
-                        placeholder="Your product original price"
-                        onChange={(e) => setOriginalPrice(e.target.value)}
-                    />
-                </div>
-                <br />
-                <div>
-                    <label htmlFor="discountPrice" className="pb-2">
-                        Final Price<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                        id="discountPrice"
-                        type="number"
-                        className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
-                        value={discountPrice}
-                        placeholder="Your product final price"
-                        onChange={(e) => setDiscountPrice(e.target.value)}
-                    />
+                <div className="block 800px:flex 800px:gap-4">
+                    <div className="w-full">
+                        <label htmlFor="originalPrice" className="pb-2">
+                            Original Price
+                        </label>
+                        <div className="flex items-center gap-1">
+                            <span className="text-[20px] mt-2">₹</span>
+                            <input
+                                id="originalPrice"
+                                type="number"
+                                className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
+                                value={originalPrice}
+                                placeholder="Your product original price"
+                                onChange={(e) => setOriginalPrice(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <br />
+                    <div className="w-full">
+                        <label htmlFor="discountPrice" className="pb-2">
+                            Final Price<span className="text-red-500">*</span>
+                        </label>
+                        <div className="flex items-center gap-1">
+                            <span className="text-[20px] mt-2">₹</span>
+                            <input
+                                id="discountPrice"
+                                type="number"
+                                className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
+                                value={discountPrice}
+                                placeholder="Your product final price"
+                                onChange={(e) => setDiscountPrice(e.target.value)}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <br />
                 <div>
@@ -207,8 +215,8 @@ const CreateProduct = () => {
                         {loading ? "Adding..." : "Add Product"}
                     </span>
                 </button>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
 

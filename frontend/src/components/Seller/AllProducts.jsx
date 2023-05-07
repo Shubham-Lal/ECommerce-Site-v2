@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai';
 import Loader from '../../styles/Loader';
 import { DataGrid } from '@mui/x-data-grid';
+import styles from '../../styles/styles';
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -103,7 +104,17 @@ const AllProducts = () => {
       {isLoading
         ? <Loader />
         : (
-          <div className="w-full mx-8 pt-1 mt-10 bg-white">
+          <div className="w-full mx-8 pt-1 800px:mt-10 bg-white">
+            <div className="w-full flex items-center justify-between px-3">
+              <h5 className="text-[25px] 800px:text-[30px] font-Poppins text-center">
+                Products
+              </h5>
+              <Link to="/dashboard-add-product" className={`${styles.button2} !h-[45px] hover:bg-amber-500 hover:rounded-sm duration-200 mb-3`}>
+                <span className="text-white">
+                  Add Product
+                </span>
+              </Link>
+            </div>
             <DataGrid
               rows={row}
               columns={columns}

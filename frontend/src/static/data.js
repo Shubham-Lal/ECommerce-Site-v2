@@ -236,7 +236,7 @@ export const sellerDasboardSidebar = [
     {
         name: "Discount Coupons",
         icon: <AiOutlineGift />,
-        url: "/dashboard/coupons"
+        url: "/dashboard-coupons"
     },
     {
         name: "Refunds",

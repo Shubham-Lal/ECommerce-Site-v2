@@ -29,6 +29,7 @@ import {
   GetProducts,
   AddEvent,
   GetEvents,
+  Coupons,
 } from './routes/SellerRoutes';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -114,6 +115,11 @@ function App() {
         <Route path="/dashboard-events" element={
           <SellerProtectedRoute>
             <GetEvents />
+          </SellerProtectedRoute>
+        } />
+        <Route path="/dashboard-coupons" element={
+          <SellerProtectedRoute>
+            <Coupons />
           </SellerProtectedRoute>
         } />
       </Routes>
