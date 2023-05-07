@@ -135,32 +135,34 @@ const CreateEvent = () => {
                     </select>
                 </div>
                 <br />
-                <div>
-                    <label htmlFor="startDate" className="pb-2">
-                        Event Start Date<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                        id="startDate"
-                        type="date"
-                        className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
-                        value={startDate ? startDate.toISOString().slice(0, 10) : ""}
-                        onChange={handleStartDateChange}
-                        min={today}
-                    />
-                </div>
-                <br />
-                <div>
-                    <label htmlFor="endDate" className="pb-2">
-                        Event End Date<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                        id="endDate"
-                        type="date"
-                        className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
-                        value={endDate ? endDate.toISOString().slice(0, 10) : ""}
-                        onChange={handleEndDateChange}
-                        min={minEndDate}
-                    />
+                <div className="block 800px:flex 800px:gap-4">
+                    <div className="w-full">
+                        <label htmlFor="startDate" className="pb-2">
+                            Event Start Date<span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            id="startDate"
+                            type="date"
+                            className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
+                            value={startDate ? startDate.toISOString().slice(0, 10) : ""}
+                            onChange={handleStartDateChange}
+                            min={today}
+                        />
+                    </div>
+                    <br />
+                    <div className="w-full">
+                        <label htmlFor="endDate" className="pb-2">
+                            Event End Date<span className="text-red-500">*</span>
+                        </label>
+                        <input
+                            id="endDate"
+                            type="date"
+                            className={`${styles.input} border-gray-300 focus:border-[#3AD132] placeholder-gray-400 sm:text-sm mt-2 appearance-none block w-full px-3 h-[35px]`}
+                            value={endDate ? endDate.toISOString().slice(0, 10) : ""}
+                            onChange={handleEndDateChange}
+                            min={minEndDate}
+                        />
+                    </div>
                 </div>
                 <br />
                 <div>
