@@ -63,13 +63,13 @@ const SellerSignup = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="min-h-max bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <h2 className="mt-6 text-center text-3xl font-extrabold font-Poppins text-gray-900">
                     Register as a Seller
                 </h2>
             </div>
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem] font-Roboto">
+            <div className="800px:mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem] font-Roboto">
                 <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                     <form className="space-y-6" onSubmit={handleCreateSeller}>
 
@@ -259,7 +259,7 @@ const SellerSignup = () => {
                             </button>
                         </div>
 
-                        {/* NEW USER */}
+                        {/* EXISTING USER */}
                         <div className={`${styles.normalFlex} w-full`}>
                             <h4>
                                 Already a seller?

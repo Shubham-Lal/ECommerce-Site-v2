@@ -120,10 +120,26 @@ router.post("/login-seller", catchAsyncError(async (req, res, next) => {
     }
 }));
 
-// Load Seller
+// Load Seller at "/api/v2/seller/getseller"
 router.post("/getseller", isSellerAuthenticated, catchAsyncError(async (req, res, next) => {
     try {
         const seller = await Seller.findById(req.seller._id);
+        if (!seller) return next(new ErrorHandler("Seller doesn't exists!", 500));
+
+        res.status(200).json({
+            success: true,
+            seller,
+        });
+    }
+    catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// Get Seller info at "/api/v2/seller/"
+router.get("/sellerinfo/:id", catchAsyncError(async (req, res, next) => {
+    try {
+        const seller = await Seller.findById(req.params.id);
         if (!seller) return next(new ErrorHandler("Seller doesn't exists!", 500));
 
         res.status(200).json({
