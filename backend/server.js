@@ -13,13 +13,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     });
 }
 
-// Database
-connectDatabase();
-
-// Server
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Connecting to Database and listening to server
+const PORT = 8000 || process.env.PORT;
+connectDatabase().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    })
 });
 
 // On Backend Call at "/"
