@@ -1,3 +1,4 @@
+require("dotenv").config();
 const app = require("./app.js");
 const connectDatabase = require("./db/Database.js");
 
@@ -7,11 +8,11 @@ process.on("uncaughtException", (err) => {
 });
 
 // Config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({
-        path: "./config/.env",
-    });
-}
+// if (process.env.NODE_ENV !== "PRODUCTION") {
+//     require("dotenv").config({
+//         path: "./config/.env",
+//     });
+// }
 
 // Connecting to Database and listening to server
 const PORT = 8000 || process.env.PORT;
@@ -19,7 +20,7 @@ connectDatabase().then(() => {
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     })
-})
+});
 
 // On Backend Call at "/"
 app.get("/", (req, res) => {
