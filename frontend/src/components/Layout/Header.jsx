@@ -270,9 +270,21 @@ const Header = ({ activeHeading }) => {
 
                             <div>
                                 {!isAuthenticated ? (
-                                    <div className="flex w-full justify-between px-5">
-                                        <Link to="/user-login" className="text-[18px] pr-[10px] text-[#000000b7]">Login</Link>
-                                        <Link to="/user-signup" className="text-[18px] text-[#000000b7]">Signup</Link>
+                                    <div className="flex w-full justify-between gap-[10px] px-6 mt-4">
+                                        <div className={`${styles.button2} !rounded-[4px]`}>
+                                            <Link to="/user-login">
+                                                <h1 className="text-[#fff] flex items-center">
+                                                    Login
+                                                </h1>
+                                            </Link>
+                                        </div>
+                                        <div className={`${styles.button2} !rounded-[4px]`}>
+                                            <Link to="/user-signup">
+                                                <h1 className="text-[#fff] flex items-center">
+                                                    Signup
+                                                </h1>
+                                            </Link>
+                                        </div>
                                     </div>
                                 ) : (
                                     <div className="flex w-full justify-center">
@@ -288,7 +300,7 @@ const Header = ({ activeHeading }) => {
                             </div>
 
                             {/* Search Widget */}
-                            <div className="my-8 w-full m-auto h-[40px] relative">
+                            <div className="my-4 w-full m-auto h-[40px] relative">
                                 <input
                                     type="search"
                                     value={searchTerm}
@@ -330,12 +342,14 @@ const Header = ({ activeHeading }) => {
                             />
 
                             {/* Seller */}
-                            <div className={`${styles.button2} group relative ml-5 !rounded-[4px]`}>
-                                <Link to={isSellerAuthenticated ? "/dashboard" : "/seller-signup"}>
-                                    <h1 className="text-[#fff] flex items-center">
-                                        {isSellerAuthenticated ? "Dashboard" : "Become Seller"} <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
-                                    </h1>
-                                </Link>
+                            <div className="w-full px-6">
+                                <div className={`${styles.button2} group w-full relative !rounded-[4px]`}>
+                                    <Link to={isSellerAuthenticated ? "/dashboard" : "/seller-signup"}>
+                                        <h1 className="text-[#fff] flex items-center">
+                                            {isSellerAuthenticated ? "Dashboard" : "Become Seller"} <IoIosArrowForward className=" absolute opacity-80 h-4 w-4 top-auto right-3 transition-all group-hover:translate-x-1.5 group-hover:h-5 group-hover:w-5 group-hover:opacity-100" />
+                                        </h1>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

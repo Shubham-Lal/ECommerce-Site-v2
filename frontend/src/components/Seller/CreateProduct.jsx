@@ -33,6 +33,7 @@ const CreateProduct = () => {
 
     const handleImageUpload = (e) => {
         let files = Array.from(e.target.files);
+        if (files.length > 2) return toast.warn("Uploading only 2 images allowed at the moment! Try again with 2 images...");
         setImages((prevImages) => [...prevImages, ...files]);
     }
 
