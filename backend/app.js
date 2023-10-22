@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL,
+    origin: "*",
     credentials: true,
     optionSuccessStatus: 200,
 }
