@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import { useSelector } from "react-redux";
-import { serverAPI, serverURL } from '../../server';
+import { serverAPI } from '../../server';
 import styles from '../../styles/styles';
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -42,7 +42,7 @@ const SellerInfo = ({ isOwner }) => {
             <div className="w-full flex items-center justify-center">
               <img
                 className="w-[150px] h-[150px] object-cover rounded-full"
-                src={`${serverURL}/${sellerAvatar}`}
+                src={sellerAvatar}
                 alt="shop"
               />
             </div>

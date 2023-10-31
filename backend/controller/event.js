@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { upload } = require("../multer");
+const singleUpload = require("../multer");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Seller = require("../model/seller.js");
 const Event = require("../model/event.js");
@@ -8,7 +8,8 @@ const ErrorHandler = require("../utils/ErrorHandler");
 const fs = require("fs");
 
 // Create Event at "/api/v2/event/create-event"
-router.post("/create-event", upload.array("images"), catchAsyncError(async (req, res, next) => {
+// router.post("/create-event", upload.array("images"), catchAsyncError(async (req, res, next) => {
+router.post("/create-event", singleUpload, catchAsyncError(async (req, res, next) => {
     try {
         const sellerId = req.body.sellerId;
         const seller = await Seller.findById(sellerId);

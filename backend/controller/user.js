@@ -1,45 +1,35 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
-const { upload } = require("../multer.js");
+const singleUpload = require("../multer.js");
 const User = require("../model/user.js");
 const ErrorHandler = require("../utils/ErrorHandler.js");
-const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const getDataUrl = require("../utils/dataURL.js");
+const { v2 } = require("cloudinary");
 const sendMail = require("../utils/sendMail.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const sendToken = require("../utils/jwtToken.js");
 const { isAuthenticated } = require("../middleware/auth.js");
 
 // User Registration at "/api/v2/user/create-user"
-router.post("/create-user", upload.single("file"), async (req, res, next) => {
+router.post("/create-user", singleUpload, async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
         const userEmail = await User.findOne({ email });
-        if (userEmail) {
-            const filename = req.file.filename;
-            const filePath = `uploads/${filename}`;
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({ message: "Error deleting file" });
-                }
-            });
-            return next(new ErrorHandler("User already exists", 400));
-        }
+        if (userEmail) return next(new ErrorHandler("User already exists", 400));
 
-        const filename = req.file.filename;
-        const fileUrl = path.join(filename);
+        if (!req.file) return next(new ErrorHandler("Upload profile picture to proceed!", 400));
 
+        const fileURL = getDataUrl(req.file);
+        const userImage = await v2.uploader.upload(fileURL.content, { folder: "CertyStore/Account" });
         const user = {
             name: name,
             email: email,
             password: password,
-            avatar: fileUrl,
+            avatar: userImage.secure_url
         };
 
         const activationToken = createActivationToken(user);
-
         const activationUrl = `${process.env.FRONTEND_URL}/activation/${activationToken}`;
 
         try {

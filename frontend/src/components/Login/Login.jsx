@@ -34,13 +34,16 @@ const Login = ({ setToken, remember, setRemember }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen bg-gray-100 flex flex-col gap-1 justify-center py-12 sm:px-6 lg:px-8"
+      style={{ backgroundImage: "url(/banner.jpg)" }}
+    >
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold font-Poppins text-gray-900">
+        <h2 className="text-center text-3xl font-extrabold font-Poppins text-gray-900">
           Login to your Account
         </h2>
       </div>
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md font-Roboto">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md font-Roboto">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleLogin}>
 
@@ -120,8 +123,9 @@ const Login = ({ setToken, remember, setRemember }) => {
             {/* LOGIN BUTTON */}
             <div>
               <button
+                disabled={loading}
                 type="submit"
-                className={`group cursor-${loading ? "not-allowed" : "pointer"} relative w-full h-40px flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${loading ? "bg-gray-400" : "bg-blue-600"} hover:${loading ? "bg-gray-500" : "bg-blue-700"}`}
+                className={`group ${loading ? "cursor-not-allowed" : "cursor-pointer"} relative w-full h-40px flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${loading ? "bg-gray-400" : "bg-blue-600"} hover:${loading ? "bg-gray-500" : "bg-blue-700"}`}
               >
                 {loading ? "Verifying..." : "LOGIN"}
               </button>

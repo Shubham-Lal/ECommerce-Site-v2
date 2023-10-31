@@ -498,11 +498,11 @@ export const productData = [
         image_Url: [
             {
                 public_id: "test",
-                url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+                url: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",
             },
             {
                 public_id: "test",
-                url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+                url: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",
             },
         ],
         shop: {
@@ -746,11 +746,11 @@ export const productData = [
         image_Url: [
             {
                 public_id: "test",
-                url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+                url: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",
             },
             {
                 public_id: "test",
-                url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+                url: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",
             },
         ],
         shop: {

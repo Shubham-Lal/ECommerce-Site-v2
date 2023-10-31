@@ -36,16 +36,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Store from './redux/store';
 import { loadSeller, loadUser } from './redux/actions/user';
-import axios from 'axios';
-import { serverURL } from './server';
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 
 function App() {
-  useEffect(() => {
-    axios.get(`${serverURL}/`);
-  }, []);
-
   const [remember, setRemember] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("token"));
   if (remember) localStorage.setItem("token", token);
@@ -124,12 +118,13 @@ function App() {
         } />
       </Routes>
       <ToastContainer
-        position="bottom-center"
+        position="top-right"
         autoClose={10000}
         hideProgressBar={false}
-        newestOnTop={false}
+        newestOnTop={true}
         closeOnClick
         rtl={false}
+        limit={5}
         pauseOnFocusLoss
         draggable
         pauseOnHover

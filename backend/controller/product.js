@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { upload } = require("../multer");
+// const { upload } = require("../multer");
+const singleUpload = require("../multer");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const Seller = require("../model/seller.js");
 const Product = require("../model/product.js");
@@ -8,7 +9,8 @@ const ErrorHandler = require("../utils/ErrorHandler");
 const fs = require("fs");
 
 // Add Product at "/api/v2/product/add-product"
-router.post("/add-product", upload.array("images"), catchAsyncError(async (req, res, next) => {
+// router.post("/add-product", upload.array("images"), catchAsyncError(async (req, res, next) => {
+router.post("/add-product", singleUpload, catchAsyncError(async (req, res, next) => {
     try {
         const sellerId = req.body.sellerId;
         const seller = await Seller.findById(sellerId);

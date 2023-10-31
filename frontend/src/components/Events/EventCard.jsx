@@ -7,7 +7,7 @@ const EventCard = ({ active }) => {
         <div className={`w-full block bg-white rounded-lg ${active ? "unset" : "mb-12"} lg:flex p-2`}>
             <div className="w-full lg:w-[50%] m-auto">
                 <img
-                    src="https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png"
+                    src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481"
                     alt="hot deal"
                 />
             </div>

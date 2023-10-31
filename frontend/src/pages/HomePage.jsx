@@ -12,7 +12,6 @@ const HomePage = () => {
   return (
     <div>
         <Header activeHeading={1} />
-        <div className="h-[2.5rem] 800px:h-0" />
         <Hero />
         <Categories />
         <BestDeals />

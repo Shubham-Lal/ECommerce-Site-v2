@@ -11,13 +11,11 @@ const SellerActivationPage = () => {
         if (activationToken) {
             const activationEmail = async () => {
                 try {
-                    const res = await axios.post(`${serverAPI}/seller/shop/activation`, {
+                    await axios.post(`${serverAPI}/seller/shop/activation`, {
                         activationToken,
                     });
-                    console.log(res.data.message);
                 }
                 catch (error) {
-                    console.log(error);
                     setError(true);
                 }
             };

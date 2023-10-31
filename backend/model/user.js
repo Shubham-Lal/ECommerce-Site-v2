@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        required: true,
+        required: [true, "Please upload your profile picture"],
     },
     createdAt: {
         type: Date,

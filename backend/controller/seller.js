@@ -1,36 +1,27 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
-const { upload } = require("../multer.js");
+const singleUpload = require("../multer.js");
 const Seller = require("../model/seller.js");
 const ErrorHandler = require("../utils/ErrorHandler.js");
-const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const getDataUrl = require("../utils/dataURL.js");
+const { v2 } = require("cloudinary");
 const sendMail = require("../utils/sendMail.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const sendToken = require("../utils/jwtToken.js");
 const { isSellerAuthenticated } = require("../middleware/auth.js");
 
 // Seller Registration at "/api/v2/seller/signup-seller"
-router.post("/signup-seller", upload.single("file"), async (req, res, next) => {
+router.post("/signup-seller", singleUpload, async (req, res, next) => {
     try {
         const { email } = req.body;
         const sellerEmail = await Seller.findOne({ email });
-        if (sellerEmail) {
-            const filename = req.file.filename;
-            const filePath = `uploads/${filename}`;
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({ message: "Error deleting file" });
-                }
-            });
-            return next(new ErrorHandler("Seller already exists", 400));
-        }
+        if (sellerEmail) return next(new ErrorHandler("Seller already exists", 400));
 
-        const filename = req.file.filename;
-        const fileUrl = path.join(filename);
+        if (!req.file) return next(new ErrorHandler("Upload profile picture to proceed!", 400));
 
+        const fileURL = getDataUrl(req.file);
+        const sellerImage = await v2.uploader.upload(fileURL.content, { folder: "CertyStore/Account" });
         const seller = {
             name: req.body.shopName,
             email: email,
@@ -38,11 +29,10 @@ router.post("/signup-seller", upload.single("file"), async (req, res, next) => {
             address: req.body.address,
             zipCode: req.body.zipCode,
             password: req.body.password,
-            avatar: fileUrl,
+            avatar: sellerImage.secure_url,
         };
 
         const activationToken = createActivationToken(seller);
-
         const activationUrl = `${process.env.FRONTEND_URL}/seller/activation/${activationToken}`;
 
         try {

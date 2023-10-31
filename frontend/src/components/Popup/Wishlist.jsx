@@ -22,7 +22,7 @@ const Wishlist = ({ setWishlistPopup }) => {
             name: "MacBook Pro M2",
             description: "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
             price: 1049,
-            imageURL: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+            imageURL: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664497359481",
         },
     ];
 

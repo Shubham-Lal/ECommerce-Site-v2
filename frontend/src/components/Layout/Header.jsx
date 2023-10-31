@@ -9,7 +9,6 @@ import { CgProfile } from "react-icons/cg";
 import Dropdown from './Dropdown';
 import Navbar from './Navbar';
 import { useSelector } from "react-redux";
-import { serverURL } from '../../server';
 import Cart from '../Popup/Cart';
 import Wishlist from '../Popup/Wishlist';
 import { RxCross1 } from 'react-icons/rx';
@@ -175,7 +174,7 @@ const Header = ({ activeHeading }) => {
                                     <Link to="/profile">
                                         <img
                                             className="w-[35px] h-[35px] rounded-full object-cover transition-all group-hover:scale-90"
-                                            src={`${serverURL}/${user.avatar}`}
+                                            src={user.avatar ? user.avatar : ""}
                                             alt="user"
                                         />
                                     </Link>
@@ -216,7 +215,7 @@ const Header = ({ activeHeading }) => {
             </div>
 
             {/* Mobile Header */}
-            <div className="fixed z-50 top-0 left-0 w-full 800px:hidden h-[70px] bg-[#fff] shadow-2xl rounded-b-2xl">
+            <div className="fixed z-50 top-0 left-0 w-full 800px:hidden h-[70px] bg-[#fff] shadow-2xl">
                 <div className="w-full flex items-center justify-between mt-3.5">
                     <div>
 
@@ -291,7 +290,7 @@ const Header = ({ activeHeading }) => {
                                         <Link to="/profile">
                                             <img
                                                 className="w-[60px] h-[60px] rounded-full border-[3px] border-[#17DD1F]"
-                                                src={`${serverURL}/${user.avatar}`}
+                                                src={user.avatar ? user.avatar : ""}
                                                 alt="user"
                                             />
                                         </Link>

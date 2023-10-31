@@ -19,8 +19,15 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     });
 }
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 const corsOptions = {
-    origin: "*",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
     optionSuccessStatus: 200,
 }

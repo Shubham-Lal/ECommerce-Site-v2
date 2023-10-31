@@ -15,6 +15,7 @@ export const loadUser = (token) => async (dispatch) => {
             });
         }
         catch (error) {
+            localStorage.removeItem("token");
             dispatch({
                 type: "LoadUserFail",
                 payload: error.response.data.message,

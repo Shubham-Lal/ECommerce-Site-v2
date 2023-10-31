@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { serverURL } from '../../server';
 import { AiOutlineArrowRight, AiOutlineCamera, AiOutlineDelete } from 'react-icons/ai';
 import { MdTrackChanges } from 'react-icons/md';
 import styles from '../../styles/styles';
@@ -45,7 +44,7 @@ const ProfileComponent = ({ user }) => {
         <div className="relative">
           <img
             className="w-[150px] h-[150px] rounded-full object-cover border-[3px] border-[#3AD132]"
-            src={`${serverURL}/${user.avatar}`}
+            src={user.avatar ? user.avatar : ""}
             alt="user"
           />
           <div className="absolute bottom-[3px] right-[5px] w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer group">
