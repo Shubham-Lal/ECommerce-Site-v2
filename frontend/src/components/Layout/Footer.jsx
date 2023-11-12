@@ -147,7 +147,7 @@ const Footer = ({ hideSubscription }) => {
                 </span>
                 <span>
                     Check out on
-                    <Link to="https://github.com/CERTIFIED2003/ECommerce-Site-v2" className="ml-1 underline">
+                    <Link to="https://github.com/Shubham-Lal/ECommerce-Site-v2" className="ml-1 underline">
                         Github
                     </Link>
                 </span>
